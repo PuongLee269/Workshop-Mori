@@ -11,116 +11,139 @@
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .wood-gradient { background: linear-gradient(135deg, #d4a373 0%, #a98467 100%); }
         html { scroll-behavior: smooth; }
+        /* Tối ưu cho Video Shorts dọc */
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px; /* Giới hạn chiều rộng vì là video dọc */
+            margin: 0 auto;
+            aspect-ratio: 9 / 16; 
+        }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
 
-    <nav class="p-6 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="text-2xl font-bold tracking-tighter text-amber-900">MORI <span class="font-light">CLASS</span></div>
-        <a href="https://forms.gle/Xe9i2QrKiexd8oo47" target="_blank" rel="noopener noreferrer" class="bg-amber-800 text-white px-6 py-2 rounded-full hover:bg-amber-700 transition">Đăng ký ngay</a>
+    <nav class="p-6 flex justify-between items-center bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <div class="text-2xl font-bold tracking-tighter text-amber-900 uppercase">MORI <span class="font-light text-stone-500">Class</span></div>
+        <a href="https://forms.gle/Xe9i2QrKiexd8oo47" target="_blank" class="bg-amber-800 text-white px-6 py-2 rounded-full hover:bg-amber-700 transition font-medium shadow-md">Đăng ký ngay</a>
     </nav>
 
-    <header class="relative h-[80vh] flex items-center justify-center text-center px-4 overflow-hidden">
+    <header class="relative h-[60vh] flex items-center justify-center text-center px-4 overflow-hidden">
         <div class="absolute inset-0 z-0">
-            <img src="https://images.unsplash.com/photo-1517210122415-b0c70b2a09bf?auto=format&fit=crop&q=80&w=2000" alt="Wooden Blocks" class="w-full h-full object-cover opacity-20">
+            <img src="https://images.unsplash.com/photo-1517210122415-b0c70b2a09bf?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-10">
         </div>
         <div class="relative z-10 max-w-4xl">
-            <span class="uppercase tracking-[0.3em] text-sm mb-4 block text-amber-700">Artistic Workshop</span>
-            <h1 class="text-5xl md:text-7xl mb-6 text-amber-900">Khối Hình Kể Chuyện</h1>
-            <p class="text-lg md:text-xl text-stone-600 mb-8 italic">"Nơi những khối gỗ thô mộc bắt đầu cất lời."</p>
-            <a href="#content" class="inline-block border-b-2 border-amber-800 pb-1 font-semibold hover:text-amber-600 transition">Khám phá nội dung ↓</a>
+            <span class="uppercase tracking-[0.4em] text-xs mb-4 block text-amber-700 font-bold">Mori Workshop</span>
+            <h1 class="text-4xl md:text-6xl mb-6 text-amber-950 leading-tight">Khối Hình Kể Chuyện</h1>
+            <div class="h-1 w-24 bg-amber-800 mx-auto mb-6"></div>
+            <p class="text-lg text-stone-600 italic">Khám phá sức mạnh của kể chuyện qua những khối gỗ thô mộc.</p>
         </div>
     </header>
 
-    <section id="content" class="py-20 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-4xl mb-8 text-amber-900 leading-tight border-l-4 border-amber-800 pl-6">Phần 1: <br>Đi tìm linh hồn của chuyện kể</h2>
-                <ul class="space-y-6">
-                    <li class="flex gap-4">
-                        <span class="text-2xl font-bold text-amber-600">01.</span>
-                        <div>
-                            <h3 class="font-bold text-xl">Thế nào là Nghệ thuật kể chuyện?</h3>
-                            <p class="text-stone-500 text-sm">Hiểu về bản chất của việc kết nối cảm xúc thông qua ngôn từ và hình ảnh.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <span class="text-2xl font-bold text-amber-600">02.</span>
-                        <div>
-                            <h3 class="font-bold text-xl">Công thức Hollywood</h3>
-                            <p class="text-stone-500 text-sm">Điều khiển cường độ câu chuyện để tạo nên những đỉnh cao cảm xúc khó quên.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <span class="text-2xl font-bold text-amber-600">03.</span>
-                        <div>
-                            <h3 class="font-bold text-xl">Phá vỡ cái Khung</h3>
-                            <p class="text-stone-500 text-sm">Khung là gì? Và làm thế nào để bứt phá khỏi những quy chuẩn cũ kỹ.</p>
-                        </div>
-                    </li>
-                </ul>
+    <section id="content" class="py-16 px-6 max-w-6xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="order-2 lg:order-1">
+                <div class="video-container shadow-2xl rounded-3xl overflow-hidden border-8 border-white">
+                    <iframe 
+                        class="absolute top-0 left-0 w-full h-full"
+                        src="https://www.youtube.com/embed/dzLtrYGiey8" 
+                        title="Workshop Khối Hình Kể Chuyện" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p class="text-center text-stone-400 text-sm mt-6 italic">Xem video cảm hứng từ Mori Class</p>
             </div>
-            <div class="bg-stone-200 aspect-square rounded-2xl overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1581404917829-5a5d99c63c7e?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover shadow-inner" alt="Workshop">
+
+            <div class="order-1 lg:order-2">
+                <h2 class="text-3xl md:text-4xl mb-10 text-amber-900 border-l-4 border-amber-800 pl-6 uppercase tracking-tight font-bold">
+                    Phần 1: <br><span class="text-stone-500 font-light italic">Nghệ thuật & Khung hình</span>
+                </h2>
+                <div class="space-y-8">
+                    <div class="flex gap-5">
+                        <span class="text-3xl font-serif italic text-amber-200">01.</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-amber-900">Thế nào là Nghệ thuật kể chuyện?</h3>
+                            <p class="text-stone-600 leading-relaxed">Không chỉ là lời nói, đó là cách chúng ta kết nối những mảnh vỡ cảm xúc thành một hành trình trọn vẹn.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl font-serif italic text-amber-200">02.</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-amber-900">Công thức Hollywood</h3>
+                            <p class="text-stone-600 leading-relaxed">Bí mật về cấu trúc cường độ câu chuyện giúp thu hút và giữ chân người nghe đến phút cuối cùng.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <span class="text-3xl font-serif italic text-amber-200">03.</span>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2 text-amber-900">Khung & Phá Khung</h3>
+                            <p class="text-stone-600 leading-relaxed">Học cách nhận diện những rào cản tư duy và cách bứt phá để sáng tạo không giới hạn.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-stone-100 px-6 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl mb-6 text-amber-900 font-bold uppercase tracking-widest text-sm">Phần 2</h2>
-            <h3 class="text-3xl mb-6">Ứng dụng thực tế</h3>
-            <div class="h-1 w-20 bg-amber-600 mx-auto mb-8"></div>
-            <p class="text-lg leading-relaxed italic text-stone-700">
-                Kể chuyện không chỉ dành cho nhà văn. Chúng tôi phân tích cách đưa nghệ thuật này vào giao tiếp, công việc và xây dựng thương hiệu cá nhân một cách tự nhiên nhất.
+    <section class="py-24 bg-stone-100 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-sm uppercase tracking-[0.3em] text-amber-700 font-bold mb-4">Phần 2</h2>
+            <h3 class="text-4xl mb-8 text-amber-950 italic">Phân tích ứng dụng thực tế</h3>
+            <p class="text-lg leading-relaxed text-stone-600 italic">
+                Chúng tôi không chỉ dạy lý thuyết. Tại đây, bạn sẽ thấy cách "kể chuyện bằng hình ảnh" thay đổi cách chúng ta giao tiếp, làm việc và xây dựng giá trị bản thân trong đời thực.
             </p>
         </div>
     </section>
 
-    <section class="py-20 px-6 max-w-6xl mx-auto">
+    <section class="py-24 px-6 max-w-6xl mx-auto">
         <div class="text-center mb-16">
-            <h2 class="text-4xl mb-4 text-amber-900">Phần 3: Sáng tạo vô hạn</h2>
-            <p class="text-stone-500 italic">Trải nghiệm chạm và kể chuyện bằng khối gỗ Mori</p>
+            <h2 class="text-sm uppercase tracking-[0.3em] text-amber-700 font-bold mb-4">Phần 3</h2>
+            <h3 class="text-4xl text-amber-950 mb-4 font-bold">Sáng tạo vô hạn</h3>
+            <p class="text-stone-500">Trải nghiệm kể chuyện trực tiếp bằng khối gỗ Mori</p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="p-8 bg-white shadow-lg rounded-xl border-t-4 border-amber-600">
-                <h4 class="font-bold mb-4 text-amber-800 uppercase tracking-wider">Chạm</h4>
-                <p class="text-sm text-stone-600 leading-loose">Cảm nhận vân gỗ, mùi hương và sức nặng của vật chất để kết nối với thực tại.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="bg-white p-10 rounded-2xl shadow-sm border-b-4 border-stone-200 hover:border-amber-600 transition duration-300">
+                <div class="text-amber-800 font-bold text-lg mb-4 underline decoration-stone-200 underline-offset-8">CHẠM</div>
+                <p class="text-stone-500 text-sm leading-relaxed">Kết nối trực giác thông qua việc tiếp xúc trực tiếp với chất liệu gỗ tự nhiên.</p>
             </div>
-            <div class="p-8 bg-white shadow-lg rounded-xl border-t-4 border-amber-600">
-                <h4 class="font-bold mb-4 text-amber-800 uppercase tracking-wider">Sắp đặt</h4>
-                <p class="text-sm text-stone-600 leading-loose">Dùng các khối hình để tạo nên cấu trúc câu chuyện của riêng bạn qua sự hỗ trợ của Mori Class.</p>
+            <div class="bg-white p-10 rounded-2xl shadow-sm border-b-4 border-stone-200 hover:border-amber-600 transition duration-300">
+                <div class="text-amber-800 font-bold text-lg mb-4 underline decoration-stone-200 underline-offset-8">SẮP ĐẶT</div>
+                <p class="text-stone-500 text-sm leading-relaxed">Xây dựng những mô hình hình học đại diện cho những nút thắt trong câu chuyện của bạn.</p>
             </div>
-            <div class="p-8 bg-white shadow-lg rounded-xl border-t-4 border-amber-600">
-                <h4 class="font-bold mb-4 text-amber-800 uppercase tracking-wider">Lan tỏa</h4>
-                <p class="text-sm text-stone-600 leading-loose">Chia sẻ góc nhìn cá nhân và lắng nghe những âm hưởng khác từ cộng đồng sáng tạo.</p>
+            <div class="bg-white p-10 rounded-2xl shadow-sm border-b-4 border-stone-200 hover:border-amber-600 transition duration-300">
+                <div class="text-amber-800 font-bold text-lg mb-4 underline decoration-stone-200 underline-offset-8">KỂ CHUYỆN</div>
+                <p class="text-stone-500 text-sm leading-relaxed">Trình bày tác phẩm và nhận về những góc nhìn đa chiều từ mọi người.</p>
             </div>
         </div>
     </section>
 
-    <section id="register" class="py-24 wood-gradient text-white px-6">
+    <section class="py-24 wood-gradient text-white px-6">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl md:text-5xl mb-8">Mở khóa sức mạnh nội tại</h2>
-            <p class="mb-12 text-lg opacity-90 leading-relaxed">
-                Câu chuyện của bạn là duy nhất. Hãy để Mori Class đồng hành cùng bạn trên hành trình đánh thức khả năng sáng tạo tiềm ẩn thông qua những chất liệu mộc mạc nhất.
+            <h2 class="text-4xl md:text-5xl mb-6 font-bold tracking-tight">Mở khóa sức mạnh nội tại</h2>
+            <p class="mb-12 text-lg opacity-90 max-w-2xl mx-auto leading-relaxed">
+                Đừng để câu chuyện của bạn bị đóng khung. Hãy đến với Mori Class để đánh thức người nghệ sĩ bên trong bạn.
             </p>
             
-            <div class="bg-white/10 p-10 rounded-3xl backdrop-blur-md border border-white/20 shadow-2xl">
-                <h3 class="text-2xl font-bold mb-4">Về Mori Class</h3>
-                <p class="text-sm opacity-80 mb-8 max-w-xl mx-auto">Không gian học tập và sáng tạo, nơi chúng tôi tin rằng mỗi cá nhân đều là một nghệ sĩ trong chính cuộc đời mình.</p>
+            <div class="bg-white/10 p-12 rounded-[2rem] backdrop-blur-md border border-white/20 shadow-2xl">
+                <h3 class="text-2xl font-bold mb-6">Về Mori Class</h3>
+                <p class="text-sm opacity-80 mb-10 max-w-xl mx-auto leading-loose font-light">
+                    Mori Class là không gian kết nối giáo dục và nghệ thuật mộc, nơi chúng tôi tin rằng trải nghiệm thủ công là cách tốt nhất để tìm lại sự cân bằng và sáng tạo.
+                </p>
                 
                 <a href="https://forms.gle/Xe9i2QrKiexd8oo47" 
                    target="_blank" 
-                   rel="noopener noreferrer" 
-                   class="inline-block bg-white text-amber-900 font-bold px-12 py-5 rounded-full hover:scale-105 transition transform shadow-xl uppercase tracking-widest text-sm">
+                   class="inline-block bg-white text-amber-950 font-bold px-12 py-5 rounded-full hover:bg-stone-100 transition transform hover:scale-105 shadow-xl uppercase tracking-widest text-sm">
                    ĐĂNG KÝ THAM GIA NGAY
                 </a>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 text-center text-stone-400 text-xs tracking-widest uppercase">
-        &copy; 2024 Mori Class - Workshop Khối Hình Kể Chuyện.
+    <footer class="py-12 text-center text-stone-400 text-xs tracking-[0.2em] uppercase bg-stone-50">
+        &copy; 2024 MORI CLASS | Crafted with Passion
     </footer>
 
 </body>
