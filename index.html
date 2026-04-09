@@ -10,13 +10,14 @@
         body { font-family: 'Montserrat', sans-serif; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .wood-gradient { background: linear-gradient(135deg, #d4a373 0%, #a98467 100%); }
+        html { scroll-behavior: smooth; }
     </style>
 </head>
 <body class="bg-stone-50 text-stone-800">
 
     <nav class="p-6 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div class="text-2xl font-bold tracking-tighter text-amber-900">MORI <span class="font-light">CLASS</span></div>
-        <a href="#register" class="bg-amber-800 text-white px-6 py-2 rounded-full hover:bg-amber-700 transition">Đăng ký ngay</a>
+        <a href="https://forms.gle/Xe9i2QrKiexd8oo47" target="_blank" rel="noopener noreferrer" class="bg-amber-800 text-white px-6 py-2 rounded-full hover:bg-amber-700 transition">Đăng ký ngay</a>
     </nav>
 
     <header class="relative h-[80vh] flex items-center justify-center text-center px-4 overflow-hidden">
@@ -34,7 +35,7 @@
     <section id="content" class="py-20 px-6 max-w-6xl mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
             <div>
-                <h2 class="text-4xl mb-8 text-amber-900 leading-tight">Phần 1: <br>Đi tìm linh hồn của chuyện kể</h2>
+                <h2 class="text-4xl mb-8 text-amber-900 leading-tight border-l-4 border-amber-800 pl-6">Phần 1: <br>Đi tìm linh hồn của chuyện kể</h2>
                 <ul class="space-y-6">
                     <li class="flex gap-4">
                         <span class="text-2xl font-bold text-amber-600">01.</span>
@@ -67,7 +68,8 @@
 
     <section class="py-20 bg-stone-100 px-6 text-center">
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-4xl mb-6 text-amber-900">Phần 2: Ứng dụng thực tế</h2>
+            <h2 class="text-4xl mb-6 text-amber-900 font-bold uppercase tracking-widest text-sm">Phần 2</h2>
+            <h3 class="text-3xl mb-6">Ứng dụng thực tế</h3>
             <div class="h-1 w-20 bg-amber-600 mx-auto mb-8"></div>
             <p class="text-lg leading-relaxed italic text-stone-700">
                 Kể chuyện không chỉ dành cho nhà văn. Chúng tôi phân tích cách đưa nghệ thuật này vào giao tiếp, công việc và xây dựng thương hiệu cá nhân một cách tự nhiên nhất.
@@ -82,16 +84,16 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="p-8 bg-white shadow-lg rounded-xl border-t-4 border-amber-600">
-                <h4 class="font-bold mb-4">Chạm</h4>
-                <p class="text-sm text-stone-600">Cảm nhận vân gỗ, mùi hương và sức nặng của vật chất.</p>
+                <h4 class="font-bold mb-4 text-amber-800 uppercase tracking-wider">Chạm</h4>
+                <p class="text-sm text-stone-600 leading-loose">Cảm nhận vân gỗ, mùi hương và sức nặng của vật chất để kết nối với thực tại.</p>
             </div>
             <div class="p-8 bg-white shadow-lg rounded-xl border-t-4 border-amber-600">
-                <h4 class="font-bold mb-4">Sắp đặt</h4>
-                <p class="text-sm text-stone-600">Dùng các khối hình để tạo nên cấu trúc câu chuyện của riêng bạn.</p>
+                <h4 class="font-bold mb-4 text-amber-800 uppercase tracking-wider">Sắp đặt</h4>
+                <p class="text-sm text-stone-600 leading-loose">Dùng các khối hình để tạo nên cấu trúc câu chuyện của riêng bạn qua sự hỗ trợ của Mori Class.</p>
             </div>
             <div class="p-8 bg-white shadow-lg rounded-xl border-t-4 border-amber-600">
-                <h4 class="font-bold mb-4">Lan tỏa</h4>
-                <p class="text-sm text-stone-600">Chia sẻ góc nhìn cá nhân thông qua tác phẩm vừa hoàn thiện.</p>
+                <h4 class="font-bold mb-4 text-amber-800 uppercase tracking-wider">Lan tỏa</h4>
+                <p class="text-sm text-stone-600 leading-loose">Chia sẻ góc nhìn cá nhân và lắng nghe những âm hưởng khác từ cộng đồng sáng tạo.</p>
             </div>
         </div>
     </section>
@@ -99,19 +101,25 @@
     <section id="register" class="py-24 wood-gradient text-white px-6">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-4xl md:text-5xl mb-8">Mở khóa sức mạnh nội tại</h2>
-            <p class="mb-12 text-lg opacity-90">
+            <p class="mb-12 text-lg opacity-90 leading-relaxed">
                 Câu chuyện của bạn là duy nhất. Hãy để Mori Class đồng hành cùng bạn trên hành trình đánh thức khả năng sáng tạo tiềm ẩn thông qua những chất liệu mộc mạc nhất.
             </p>
             
-            <div class="bg-white/10 p-8 rounded-2xl backdrop-blur-sm border border-white/20">
+            <div class="bg-white/10 p-10 rounded-3xl backdrop-blur-md border border-white/20 shadow-2xl">
                 <h3 class="text-2xl font-bold mb-4">Về Mori Class</h3>
-                <p class="text-sm opacity-80 mb-6">Không gian học tập và sáng tạo, nơi chúng tôi tin rằng mỗi cá nhân đều là một nghệ sĩ trong chính cuộc đời mình.</p>
-                <button class="bg-white text-amber-900 font-bold px-10 py-4 rounded-full hover:scale-105 transition transform">ĐĂNG KÝ THAM GIA NGAY</button>
+                <p class="text-sm opacity-80 mb-8 max-w-xl mx-auto">Không gian học tập và sáng tạo, nơi chúng tôi tin rằng mỗi cá nhân đều là một nghệ sĩ trong chính cuộc đời mình.</p>
+                
+                <a href="https://forms.gle/Xe9i2QrKiexd8oo47" 
+                   target="_blank" 
+                   rel="noopener noreferrer" 
+                   class="inline-block bg-white text-amber-900 font-bold px-12 py-5 rounded-full hover:scale-105 transition transform shadow-xl uppercase tracking-widest text-sm">
+                   ĐĂNG KÝ THAM GIA NGAY
+                </a>
             </div>
         </div>
     </section>
 
-    <footer class="py-8 text-center text-stone-400 text-sm">
+    <footer class="py-12 text-center text-stone-400 text-xs tracking-widest uppercase">
         &copy; 2024 Mori Class - Workshop Khối Hình Kể Chuyện.
     </footer>
 
