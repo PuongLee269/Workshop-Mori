@@ -1008,11 +1008,41 @@
 
       const heroMediaUrl = settings.heroMediaUrl || settings.heroVideo || settings.heroImage;
       if (heroMediaUrl) renderMedia(document.querySelector("#heroMedia"), heroMediaUrl, "Hero media", settings.heroMediaFit || "auto");
-      if (settings.bodyFont) document.documentElement.style.setProperty("--body-font", settings.bodyFont);
-      if (settings.titleFont) {
-        document.documentElement.style.setProperty("--title-font", settings.titleFont);
-        document.documentElement.style.setProperty("--accent-font", settings.titleFont);
-      }
+      // --- ĐOẠN CODE BỔ SUNG ĐỂ NHẬN DIỆN MÀU TỪ ADMIN ---
+
+// 1. Áp dụng màu nền và màu chữ cho vùng Sáng (Body)
+if (settings.colorLightBg) {
+  document.body.style.backgroundColor = settings.colorLightBg;
+  // Cập nhật luôn nền cho topbar đồng bộ
+  const topbar = document.querySelector(".topbar");
+  if (topbar) topbar.style.backgroundColor = settings.colorLightBg + "ec"; // Thêm độ trong suốt alpha
+}
+if (settings.colorLightText) {
+  document.body.style.color = settings.colorLightText;
+}
+
+// 2. Áp dụng màu nền và màu chữ cho các vùng Tối (Dark sections, Footer, Ticket)
+if (settings.colorDarkBg) {
+  document.querySelectorAll(".dark, .ticket, footer").forEach(el => {
+    el.style.backgroundColor = settings.colorDarkBg;
+  });
+}
+if (settings.colorDarkText) {
+  document.querySelectorAll(".dark, .ticket, footer, .dark h2, .dark h3, .dark p, .dark .section-copy, .ticket h2, .ticket p, footer h3, footer p, footer li").forEach(el => {
+    el.style.color = settings.colorDarkText;
+  });
+}
+
+// 3. Áp dụng màu điểm nhấn (Accent) cho các nút, Badge và khối CTA vàng
+if (settings.colorAccent) {
+  // Nút đăng ký phụ, badge lộ trình, icon card vấn đề
+  document.querySelectorAll(".pill.secondary, .journey-badge, .card-icon, .cta, .price-card.featured").forEach(el => {
+    el.style.backgroundColor = settings.colorAccent;
+  });
+  // Viền border của thẻ early bird
+  const featuredCard = document.querySelector(".price-card.featured");
+  if (featuredCard) featuredCard.style.borderColor = settings.colorAccent;
+}
       if (settings.googleFormUrl) {
         document.querySelectorAll(".registration-link, .nav-actions .pill, .hero-actions .pill:first-child, .cta .pill").forEach((link) => {
           link.setAttribute("href", settings.googleFormUrl);
