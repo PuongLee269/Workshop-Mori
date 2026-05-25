@@ -255,22 +255,6 @@
         #111;
     }
 
-    .hero-note {
-      position: absolute;
-      right: 24px;
-      bottom: 24px;
-      max-width: 292px;
-      padding: 20px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 18px 50px rgba(22, 20, 18, 0.18);
-      color: #2a241d;
-      font-size: 14px;
-      font-weight: 800;
-      line-height: 1.6;
-      z-index: 2;
-    }
-
     .hero-fallback {
       position: relative;
       z-index: 1;
@@ -683,13 +667,6 @@
         padding: 64px 0;
       }
 
-      .hero-note {
-        right: 14px;
-        bottom: 14px;
-        left: 14px;
-        max-width: none;
-      }
-
       .experience-grid,
       .form-grid {
         grid-template-columns: 1fr;
@@ -729,9 +706,6 @@
       </div>
       <div class="hero-media" id="heroMedia">
         <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1400&q=85" alt="Không gian rạp chiếu phim với ánh sáng cinematic">
-        <div class="hero-note">
-          Background video loop gợi ý: neon đêm, hành lang ký ức, chuyển động chậm, ánh hổ phách trên nền shadow black.
-        </div>
       </div>
     </section>
 
@@ -1012,14 +986,13 @@
         if (fit === "contain") container.classList.add("fit-contain");
         const youtubeId = getYouTubeId(url);
         const isVideoFile = isDirectVideo(url);
-        const note = container.querySelector(".hero-note")?.outerHTML || "";
         if (youtubeId) {
-          container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&controls=0&loop=1&playlist=${youtubeId}&playsinline=1&rel=0&modestbranding=1" title="${title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>${note}`;
+          container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&controls=0&loop=1&playlist=${youtubeId}&playsinline=1&rel=0&modestbranding=1" title="${title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
           return;
         }
         container.innerHTML = isVideoFile
-          ? `<video src="${url}" autoplay loop playsinline preload="metadata"></video>${note}`
-          : `<img src="${url}" alt="">${note}`;
+          ? `<video src="${url}" autoplay loop playsinline preload="metadata"></video>`
+          : `<img src="${url}" alt="">`;
         prepareHeroMedia(container, fit);
       }
 
@@ -1061,8 +1034,7 @@
       }
 
       function showMediaError(container) {
-        const note = container.querySelector(".hero-note")?.outerHTML || "";
-        container.innerHTML = `<div class="hero-fallback">Không tải được media. Hãy kiểm tra link ảnh/video trong Admin.</div>${note}`;
+        container.innerHTML = `<div class="hero-fallback">Không tải được media. Hãy kiểm tra link ảnh/video trong Admin.</div>`;
       }
 
       function isDirectVideo(url) {
