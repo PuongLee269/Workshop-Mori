@@ -109,7 +109,17 @@
     }
 
     textarea { min-height: 112px; resize: vertical; }
-    input[type="range"] { padding: 0; accent-color: var(--accent); }
+    .color-picker-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    input[type="color"] {
+      width: 60px;
+      padding: 2px;
+      min-height: 44px;
+      cursor: pointer;
+    }
     .hint { color: var(--muted); font-size: 12px; }
 
     .toast {
@@ -143,7 +153,7 @@
     <div class="topbar-inner">
       <div>
         <h1>Admin Mori Landing</h1>
-        <p class="sub">Các tab đã khớp với cấu trúc hiện tại của index.html.</p>
+        <p class="sub">Các tab đã khớp với cấu trúc 3 chặng mới và tích hợp tính năng chỉnh sửa màu sắc.</p>
       </div>
       <div class="actions">
         <button class="primary" id="saveBtn" type="button">Lưu thay đổi</button>
@@ -163,6 +173,7 @@
         <button class="tab" type="button" data-tab="ticket">Vé & CTA</button>
         <button class="tab" type="button" data-tab="footer">Footer</button>
         <button class="tab" type="button" data-tab="media">Media</button>
+        <button class="tab" type="button" data-tab="colors">Màu sắc</button>
         <button class="tab" type="button" data-tab="type">Font</button>
       </nav>
 
@@ -201,19 +212,17 @@
         <section class="section" data-section="journey">
           <div class="section-head">
             <h2>Lộ trình</h2>
-            <p>Media grid 4 phần trong section tối.</p>
+            <p>Các khối chặng trải nghiệm riêng biệt (Chữ một bên - Ảnh một bên).</p>
           </div>
           <div class="grid">
             <div class="field full"><label for="journeyTitle">Tiêu đề lộ trình</label><textarea id="journeyTitle" name="journeyTitle"></textarea></div>
             <div class="field full"><label for="journeyLead">Mô tả lộ trình</label><textarea id="journeyLead" name="journeyLead"></textarea></div>
-            <div class="field"><label for="part1Title">Phần 1 - tiêu đề</label><input id="part1Title" name="part1Title" /></div>
-            <div class="field"><label for="part2Title">Phần 2 - tiêu đề</label><input id="part2Title" name="part2Title" /></div>
-            <div class="field full"><label for="part1Body">Phần 1 - mô tả</label><textarea id="part1Body" name="part1Body"></textarea></div>
-            <div class="field full"><label for="part2Body">Phần 2 - mô tả</label><textarea id="part2Body" name="part2Body"></textarea></div>
-            <div class="field"><label for="part3Title">Phần 3 - tiêu đề</label><input id="part3Title" name="part3Title" /></div>
-            <div class="field"><label for="part4Title">Phần 4 - tiêu đề</label><input id="part4Title" name="part4Title" /></div>
-            <div class="field full"><label for="part3Body">Phần 3 - mô tả</label><textarea id="part3Body" name="part3Body"></textarea></div>
-            <div class="field full"><label for="part4Body">Phần 4 - mô tả</label><textarea id="part4Body" name="part4Body"></textarea></div>
+            <div class="field"><label for="part1Title">Chặng 1 - tiêu đề</label><input id="part1Title" name="part1Title" /></div>
+            <div class="field"><label for="part2Title">Chặng 2 - tiêu đề</label><input id="part2Title" name="part2Title" /></div>
+            <div class="field full"><label for="part1Body">Chặng 1 - mô tả</label><textarea id="part1Body" name="part1Body"></textarea></div>
+            <div class="field full"><label for="part2Body">Chặng 2 - mô tả</label><textarea id="part2Body" name="part2Body"></textarea></div>
+            <div class="field full"><label for="part3Title">Chặng 3 - tiêu đề</label><input id="part3Title" name="part3Title" /></div>
+            <div class="field full"><label for="part3Body">Chặng 3 - mô tả</label><textarea id="part3Body" name="part3Body"></textarea></div>
           </div>
         </section>
 
@@ -287,6 +296,51 @@
           </div>
         </section>
 
+        <section class="section" data-section="colors">
+          <div class="section-head">
+            <h2>Màu sắc</h2>
+            <p>Tùy chỉnh hệ thống mã màu toàn trang để tối ưu nhận diện thương hiệu.</p>
+          </div>
+          <div class="grid">
+            <div class="field">
+              <label for="colorLightBg">Màu nền trang (Vùng Sáng)</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="colorLightBg_picker" oninput="document.getElementById('colorLightBg').value = this.value">
+                <input type="text" id="colorLightBg" name="colorLightBg" placeholder="#fff7e8" onchange="document.getElementById('colorLightBg_picker').value = this.value">
+              </div>
+            </div>
+            <div class="field">
+              <label for="colorDarkBg">Màu nền trang (Vùng Tối)</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="colorDarkBg_picker" oninput="document.getElementById('colorDarkBg').value = this.value">
+                <input type="text" id="colorDarkBg" name="colorDarkBg" placeholder="#171513" onchange="document.getElementById('colorDarkBg_picker').value = this.value">
+              </div>
+            </div>
+            <div class="field">
+              <label for="colorLightText">Màu chữ (Vùng Sáng)</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="colorLightText_picker" oninput="document.getElementById('colorLightText').value = this.value">
+                <input type="text" id="colorLightText" name="colorLightText" placeholder="#171412" onchange="document.getElementById('colorLightText_picker').value = this.value">
+              </div>
+            </div>
+            <div class="field">
+              <label for="colorDarkText">Màu chữ (Vùng Tối)</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="colorDarkText_picker" oninput="document.getElementById('colorDarkText').value = this.value">
+                <input type="text" id="colorDarkText" name="colorDarkText" placeholder="#ffffff" onchange="document.getElementById('colorDarkText_picker').value = this.value">
+              </div>
+            </div>
+            <div class="field full">
+              <label for="colorAccent">Màu chủ đạo nhấn (Accent Vàng nghệ)</label>
+              <div class="color-picker-wrapper">
+                <input type="color" id="colorAccent_picker" oninput="document.getElementById('colorAccent').value = this.value">
+                <input type="text" id="colorAccent" name="colorAccent" placeholder="#efc45b" onchange="document.getElementById('colorAccent_picker').value = this.value">
+              </div>
+              <span class="hint">Màu áp dụng cho các nút Đăng ký, dải màu Highlight, Chặng Badge và khối CTA.</span>
+            </div>
+          </div>
+        </section>
+
         <section class="section" data-section="type">
           <div class="section-head">
             <h2>Font</h2>
@@ -319,16 +373,14 @@
       hookCard2Body: "Không chỉ là niềm tin. Ta nhìn nó qua chú ý, dopamine, dự đoán và mô thức gắn bó.",
       hookCard3Title: "Tâm lý học giúp gọi tên",
       hookCard3Body: "Jung, Adler và điện ảnh cho ta ngôn ngữ để đọc lại hình mẫu vô thức trong tình yêu.",
-      journeyTitle: "Bốn chặng trải nghiệm không tường chữ",
-      journeyLead: "Layout dạng media grid giúp người xem quét nhanh: chơi, xem, thảo luận và bước vào cộng đồng. Mỗi chặng có hình ảnh riêng để dễ nhớ và dễ chuyển đổi.",
-      part1Title: "01. Game & Science",
-      part1Body: "Xây dựng câu chuyện tình yêu bằng thẻ ngẫu nhiên, kỹ thuật Hollywood, Jung, Adler và neuroscience.",
-      part2Title: "02. Watch Movie",
-      part2Body: "Một trải nghiệm xem phim tập thể, nơi hình ảnh, nhạc và khoảng lặng trở thành dữ liệu cảm xúc.",
-      part3Title: "03. Discussion",
-      part3Body: "Giải mã nhân vật, biểu tượng, mô thức yêu và chia sẻ câu chuyện cá nhân trong không gian ấm.",
-      part4Title: "04. Mori Class",
-      part4Body: "Lời mời vào cộng đồng nhỏ dành cho người yêu điện ảnh, tư duy nội tâm và kết nối sâu.",
+      journeyTitle: "Một lộ trình rõ ràng, giàu hình ảnh, không tường chữ.",
+      journeyLead: "Bạn đi qua ba chặng: tạo câu chuyện, xem phim, giải mã tâm lý và bước vào cộng đồng Mori Class.",
+      part1Title: "Game - Xây Dựng Câu Chuyện Tình Yêu",
+      part1Body: "Bạn bốc những lá bài kể chuyện ngẫu nhiên, ghép thành một tuyến tình yêu theo kỹ thuật Hollywood, rồi nhìn vào những lựa chọn ấy qua lăng kính Carl Jung, Alfred Adler và khoa học thần kinh về lực hút.",
+      part2Title: "Cinema Time - Xem Phim",
+      part2Body: "Cả phòng cùng đi vào một trải nghiệm điện ảnh tập thể, nơi từng ánh nhìn, khoảng lặng và cú dựng hình trở thành dữ liệu cảm xúc để mỗi người tự quan sát phản ứng bên trong mình.",
+      part3Title: "Connection - Giao Lưu & Thảo Luận",
+      part3Body: "Sau bộ phim, ta bóc tách các tầng tâm lý của nhân vật, đối thoại về tình yêu, ký ức, lựa chọn, và chia sẻ những câu chuyện cá nhân trong một không gian tôn trọng chiều sâu.",
       audienceTitle: "Người xem phim bằng cả trí tuệ lẫn trái tim",
       audienceLead: "Không cần nền tảng học thuật. Chỉ cần bạn tò mò, thích quan sát và muốn tham gia những cuộc trò chuyện thật.",
       audience1Title: "The Cinema Lover",
@@ -364,7 +416,12 @@
       heroMediaUrl: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1800&q=85",
       heroMediaFit: "auto",
       bodyFont: '"Be Vietnam Pro", "Segoe UI", Arial, sans-serif',
-      titleFont: '"Playfair Display", Lora, "Times New Roman", serif'
+      titleFont: '"Playfair Display", Lora, "Times New Roman", serif',
+      colorLightBg: "#fff7e8",
+      colorDarkBg: "#171513",
+      colorLightText: "#171412",
+      colorDarkText: "#ffffff",
+      colorAccent: "#efc45b"
     };
 
     const form = document.querySelector("#settingsForm");
@@ -378,7 +435,12 @@
     function fillForm(settings) {
       Object.entries(settings).forEach(([key, value]) => {
         const field = form.elements[key];
-        if (field) field.value = value;
+        if (field) {
+          field.value = value;
+          // Đồng bộ giá trị sang Color Picker tương ứng nếu là trường màu sắc
+          const picker = document.getElementById(`${key}_picker`);
+          if (picker) picker.value = value || "#000000";
+        }
       });
     }
 
