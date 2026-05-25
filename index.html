@@ -12,10 +12,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Lora:ital,wght@0,600;0,700;1,600;1,700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
+    /* HỆ THỐNG BIẾN CSS ĐỘNG ĐỂ ĐỒNG BỘ VỚI CÀI ĐẶT MÀU/FONT TỪ ADMIN */
     :root {
       --body-font: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif;
       --title-font: "Playfair Display", "Lora", "Times New Roman", serif;
       --accent-font: "Lora", "Times New Roman", serif;
+
+      /* Các biến màu mặc định (Sẽ bị ghi đè bởi LocalStorage khi lưu từ Admin) */
+      --color-light-bg: #fff7e8;
+      --color-dark-bg: #171513;
+      --color-light-text: #171412;
+      --color-dark-text: #ffffff;
+      --color-accent: #efc45b;
     }
 
     * {
@@ -31,11 +39,12 @@
     body {
       min-height: 100vh;
       overflow-x: hidden;
-      background: #fff7e8;
-      color: #171412;
+      background: var(--color-light-bg);
+      color: var(--color-light-text);
       font-family: var(--body-font);
       -webkit-font-smoothing: antialiased;
       line-height: 1.65;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a {
@@ -43,9 +52,7 @@
       text-decoration: none;
     }
 
-    img,
-    video,
-    iframe {
+    img, video, iframe {
       display: block;
       width: 100%;
     }
@@ -60,8 +67,10 @@
       top: 0;
       z-index: 20;
       border-bottom: 1px solid rgba(23, 20, 18, 0.08);
-      background: rgba(255, 247, 232, 0.92);
+      background: var(--color-light-bg);
+      opacity: 0.96;
       backdrop-filter: blur(14px);
+      transition: background-color 0.3s ease;
     }
 
     .nav {
@@ -72,8 +81,7 @@
       gap: 24px;
     }
 
-    .nav-links,
-    .nav-actions {
+    .nav-links, .nav-actions {
       display: flex;
       align-items: center;
       gap: 22px;
@@ -105,21 +113,21 @@
       padding: 0 22px;
       border: 0;
       border-radius: 999px;
-      background: #171412;
-      color: #fff;
+      background: var(--color-light-text);
+      color: var(--color-dark-text);
       font-weight: 900;
       cursor: pointer;
     }
 
     .pill.secondary {
-      background: #efc45b;
+      background: var(--color-accent);
       color: #171412;
     }
 
     .pill.outline {
       border: 1px solid rgba(23, 20, 18, 0.16);
       background: transparent;
-      color: #171412;
+      color: var(--color-light-text);
     }
 
     .eyebrow {
@@ -137,7 +145,7 @@
     .eyebrow::before {
       width: 34px;
       height: 2px;
-      background: #d99b27;
+      background: var(--color-accent);
       content: "";
     }
 
@@ -169,8 +177,7 @@
       font-weight: 700;
     }
 
-    .section-copy,
-    .hero-text {
+    .section-copy, .hero-text {
       max-width: 640px;
       color: #61584d;
       font-size: 18px;
@@ -200,7 +207,7 @@
       min-height: 620px;
       overflow: hidden;
       border-radius: 26px;
-      background: linear-gradient(180deg, rgba(17, 17, 17, 0.05), rgba(17, 17, 17, 0.62)), #dfc17b;
+      background: linear-gradient(180deg, rgba(17, 17, 17, 0.05), rgba(17, 17, 17, 0.62)), var(--color-accent);
       box-shadow: 0 26px 80px rgba(38, 30, 17, 0.2);
     }
 
@@ -212,9 +219,7 @@
       content: "";
     }
 
-    .hero-media img,
-    .hero-media video,
-    .hero-media iframe {
+    .hero-media img, .hero-media video, .hero-media iframe {
       position: relative;
       z-index: 1;
       height: 620px;
@@ -223,21 +228,17 @@
       filter: saturate(0.95) contrast(1.05);
     }
 
-    .hero-media.is-portrait img,
-    .hero-media.is-portrait video {
+    .hero-media.is-portrait img, .hero-media.is-portrait video {
       object-fit: contain;
       background: radial-gradient(circle at 50% 35%, rgba(239, 196, 91, 0.18), transparent 22rem), #111;
     }
 
-    .hero-media.is-landscape img,
-    .hero-media.is-landscape video,
-    .hero-media.fit-cover img,
-    .hero-media.fit-cover video {
+    .hero-media.is-landscape img, .hero-media.is-landscape video,
+    .hero-media.fit-cover img, .hero-media.fit-cover video {
       object-fit: cover;
     }
 
-    .hero-media.fit-contain img,
-    .hero-media.fit-contain video {
+    .hero-media.fit-contain img, .hero-media.fit-contain video {
       object-fit: contain;
       background: radial-gradient(circle at 50% 35%, rgba(239, 196, 91, 0.18), transparent 22rem), #111;
     }
@@ -260,17 +261,18 @@
     }
 
     .light {
-      background: #fff;
+      background: var(--color-light-bg);
+      color: var(--color-light-text);
     }
 
     .dark {
-      background: #171513;
-      color: #fff;
+      background: var(--color-dark-bg);
+      color: var(--color-dark-text);
     }
 
-    .dark .section-copy,
-    .dark .visual-note {
-      color: #d7cec1;
+    .dark .section-copy, .dark .visual-note, .dark .journey-editable-area {
+      color: var(--color-dark-text);
+      opacity: 0.85;
     }
 
     .section-heading {
@@ -292,6 +294,9 @@
       padding: 28px;
       border: 1px solid rgba(22, 20, 18, 0.08);
       border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .light .card {
       background: #fffaf1;
     }
 
@@ -303,7 +308,7 @@
       justify-content: center;
       margin-bottom: 22px;
       border-radius: 50%;
-      background: #f1c55f;
+      background: var(--color-accent);
       color: #171412;
       font-family: var(--accent-font);
       font-size: 24px;
@@ -318,29 +323,31 @@
       color: #645b51;
       line-height: 1.74;
     }
+    .dark .card p {
+      color: inherit;
+    }
 
-    /* --- CẤU TRÚC TÁCH KHỐI CHO PHẦN LỘ TRÌNH (JOURNEY ROWS) --- */
+    /* --- BỐ CỤC HÀNG DỌC ĐÔI XEN KẼ CỦA LỘ TRÌNH (JOURNEY) --- */
     .journey-container {
       display: flex;
       flex-direction: column;
-      gap: 80px; /* Khoảng cách giữa các khối chặng */
+      gap: 80px;
       margin-top: 48px;
     }
 
     .journey-row {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* Chia đôi: một bên chữ, một bên hình */
+      grid-template-columns: 1fr 1fr;
       gap: 56px;
       align-items: center;
     }
 
-    /* Đổi hướng xen kẽ (Chặng 2 ảnh bên trái, chữ bên phải) */
     .journey-row:nth-child(even) {
       direction: rtl;
     }
     .journey-row:nth-child(even) .journey-text-side,
     .journey-row:nth-child(even) .journey-media-side {
-      direction: ltr; /* Trả lại hướng chữ bình thường */
+      direction: ltr;
     }
 
     .journey-text-side {
@@ -352,7 +359,7 @@
     .journey-badge {
       display: inline-flex;
       align-self: flex-start;
-      background: #efc45b;
+      background: var(--color-accent);
       color: #171412;
       font-size: 12px;
       font-weight: 900;
@@ -362,14 +369,9 @@
       letter-spacing: 0.06em;
     }
 
-    .journey-text-side h3 {
-      color: #fff;
-    }
-
     .journey-editable-area {
       font-size: 16px;
       line-height: 1.8;
-      color: #d7cec1;
     }
 
     .journey-media-side {
@@ -389,14 +391,13 @@
       margin-top: 8px;
       padding-top: 14px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-      color: #8e8477;
       font-size: 13px;
       font-weight: 700;
       line-height: 1.55;
     }
 
     .method {
-      background: #fff7e8;
+      background: var(--color-light-bg);
     }
 
     .steps {
@@ -420,6 +421,9 @@
       background: #fff;
       box-shadow: 0 16px 44px rgba(42, 35, 25, 0.06);
     }
+    .dark .step {
+      background: rgba(255, 255, 255, 0.05);
+    }
 
     .step span {
       display: inline-flex;
@@ -429,8 +433,8 @@
       align-items: center;
       justify-content: center;
       border-radius: 50%;
-      background: #171513;
-      color: #fff;
+      background: var(--color-light-text);
+      color: var(--color-dark-text);
       font-weight: 900;
     }
 
@@ -442,11 +446,14 @@
     .step p {
       color: #645b51;
     }
+    .dark .step p {
+      color: inherit;
+    }
 
     .ticket {
       padding: 88px 0;
-      background: #171513;
-      color: #fff;
+      background: var(--color-dark-bg);
+      color: var(--color-dark-text);
     }
 
     .ticket-grid {
@@ -461,8 +468,7 @@
       gap: 14px;
     }
 
-    .price-card,
-    .form-panel {
+    .price-card, .form-panel {
       border-radius: 8px;
       background: #fff8ec;
       color: #171412;
@@ -474,7 +480,7 @@
     }
 
     .price-card.featured {
-      border-color: #efc45b;
+      border-color: var(--color-accent);
       background: #f8df99;
     }
 
@@ -515,11 +521,6 @@
 
     .registration-panel h3 {
       margin-bottom: 12px;
-    }
-
-    .registration-panel .section-copy {
-      max-width: none;
-      font-size: 16px;
     }
 
     .form-grid {
@@ -573,7 +574,7 @@
 
     .cta {
       padding: 72px 0;
-      background: #efc45b;
+      background: var(--color-accent);
       color: #171412;
     }
 
@@ -584,14 +585,10 @@
       gap: 28px;
     }
 
-    .cta h2 {
-      max-width: 760px;
-    }
-
     footer {
       padding: 58px 0;
-      background: #171513;
-      color: #fff;
+      background: var(--color-dark-bg);
+      color: var(--color-dark-text);
     }
 
     .footer-grid {
@@ -614,7 +611,6 @@
       font-size: 16px;
     }
 
-    /* --- RESPONSIVE CHUẨN CHO KHỐI ĐÔI --- */
     @media (max-width: 980px) {
       .nav {
         grid-template-columns: 1fr;
@@ -632,7 +628,7 @@
       }
 
       .journey-row, .journey-row:nth-child(even) {
-        direction: ltr; /* Tắt đảo cột trên điện thoại để ảnh luôn xếp dưới hoặc trên chữ đồng đều */
+        direction: ltr;
         gap: 32px;
       }
 
@@ -766,7 +762,7 @@
               <div class="journey-editable-area">
                 <p>Bạn bốc những lá bài kể chuyện ngẫu nhiên, ghép thành một tuyến tình yêu theo kỹ thuật Hollywood, rồi nhìn vào những lựa chọn ấy qua lăng kính Carl Jung, Alfred Adler và khoa học thần kinh về lực hút.</p>
               </div>
-              <div class="visual-note"></div>
+              <div class="visual-note">Visual: psychological tarot-like cards, brain waves, Jungian archetypes.</div>
             </div>
             <div class="journey-media-side">
               <img src="https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=900&q=85" alt="Kể chuyện và những thẻ bài tâm lý học">
@@ -780,7 +776,7 @@
               <div class="journey-editable-area">
                 <p>Cả phòng cùng đi vào một trải nghiệm điện ảnh tập thể, nơi từng ánh nhìn, khoảng lặng và cú dựng hình trở thành dữ liệu cảm xúc để mỗi người tự quan sát phản ứng bên trong mình.</p>
               </div>
-              <div class="visual-note"></div>
+              <div class="visual-note">Visual: projector beam, dim lights, close faces, notes, emotional depth.</div>
             </div>
             <div class="journey-media-side">
               <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=85" alt="Không gian chiếu phim cinematic">
@@ -794,14 +790,13 @@
               <div class="journey-editable-area">
                 <p>Sau bộ phim, ta bóc tách các tầng tâm lý của nhân vật, đối thoại về tình yêu, ký ức, lựa chọn, và chia sẻ những câu chuyện cá nhân trong một không gian tôn trọng chiều sâu.</p>
               </div>
-              <div class="visual-note"></div>
+              <div class="visual-note">Visual: club badge, community collage, welcoming dynamic dynamic.</div>
             </div>
             <div class="journey-media-side">
               <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=85" alt="Cộng đồng kết nối sâu sắc Mori Class">
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -942,7 +937,14 @@
         return;
       }
 
-      // Đã cập nhật lại selector để trỏ chuẩn vào cấu trúc hàng dọc (row) mới
+      // --- 1. LOGIC GHI ĐÈ HỆ THỐNG MÀU SẮC ĐỘNG VÀO CSS VARIABLES ---
+      if (settings.colorLightBg) document.documentElement.style.setProperty("--color-light-bg", settings.colorLightBg);
+      if (settings.colorDarkBg) document.documentElement.style.setProperty("--color-dark-bg", settings.colorDarkBg);
+      if (settings.colorLightText) document.documentElement.style.setProperty("--color-light-text", settings.colorLightText);
+      if (settings.colorDarkText) document.documentElement.style.setProperty("--color-dark-text", settings.colorDarkText);
+      if (settings.colorAccent) document.documentElement.style.setProperty("--color-accent", settings.colorAccent);
+
+      // --- 2. ÁNH XẠ NỘI DUNG CHỮ LÊN GIAO DIỆN ---
       const textTargets = {
         navBrand: ".brand",
         heroEyebrow: ".hero .eyebrow",
@@ -1006,43 +1008,21 @@
         });
       });
 
+      // --- 3. ÁNH XẠ TOÀN BỘ 4 KHUNG HÌNH ĐỘNG TỪ TAB MEDIA ADMIN ---
       const heroMediaUrl = settings.heroMediaUrl || settings.heroVideo || settings.heroImage;
       if (heroMediaUrl) renderMedia(document.querySelector("#heroMedia"), heroMediaUrl, "Hero media", settings.heroMediaFit || "auto");
-      // --- ĐOẠN CODE BỔ SUNG ĐỂ NHẬN DIỆN MÀU TỪ ADMIN ---
+      
+      if (settings.journeyImg1) document.querySelector(".journey-row:nth-child(1) .journey-media-side img").src = settings.journeyImg1;
+      if (settings.journeyImg2) document.querySelector(".journey-row:nth-child(2) .journey-media-side img").src = settings.journeyImg2;
+      if (settings.journeyImg3) document.querySelector(".journey-row:nth-child(3) .journey-media-side img").src = settings.journeyImg3;
 
-// 1. Áp dụng màu nền và màu chữ cho vùng Sáng (Body)
-if (settings.colorLightBg) {
-  document.body.style.backgroundColor = settings.colorLightBg;
-  // Cập nhật luôn nền cho topbar đồng bộ
-  const topbar = document.querySelector(".topbar");
-  if (topbar) topbar.style.backgroundColor = settings.colorLightBg + "ec"; // Thêm độ trong suốt alpha
-}
-if (settings.colorLightText) {
-  document.body.style.color = settings.colorLightText;
-}
+      // --- 4. CẤU HÌNH FONT CHỮ ---
+      if (settings.bodyFont) document.documentElement.style.setProperty("--body-font", settings.bodyFont);
+      if (settings.titleFont) {
+        document.documentElement.style.setProperty("--title-font", settings.titleFont);
+        document.documentElement.style.setProperty("--accent-font", settings.titleFont);
+      }
 
-// 2. Áp dụng màu nền và màu chữ cho các vùng Tối (Dark sections, Footer, Ticket)
-if (settings.colorDarkBg) {
-  document.querySelectorAll(".dark, .ticket, footer").forEach(el => {
-    el.style.backgroundColor = settings.colorDarkBg;
-  });
-}
-if (settings.colorDarkText) {
-  document.querySelectorAll(".dark, .ticket, footer, .dark h2, .dark h3, .dark p, .dark .section-copy, .ticket h2, .ticket p, footer h3, footer p, footer li").forEach(el => {
-    el.style.color = settings.colorDarkText;
-  });
-}
-
-// 3. Áp dụng màu điểm nhấn (Accent) cho các nút, Badge và khối CTA vàng
-if (settings.colorAccent) {
-  // Nút đăng ký phụ, badge lộ trình, icon card vấn đề
-  document.querySelectorAll(".pill.secondary, .journey-badge, .card-icon, .cta, .price-card.featured").forEach(el => {
-    el.style.backgroundColor = settings.colorAccent;
-  });
-  // Viền border của thẻ early bird
-  const featuredCard = document.querySelector(".price-card.featured");
-  if (featuredCard) featuredCard.style.borderColor = settings.colorAccent;
-}
       if (settings.googleFormUrl) {
         document.querySelectorAll(".registration-link, .nav-actions .pill, .hero-actions .pill:first-child, .cta .pill").forEach((link) => {
           link.setAttribute("href", settings.googleFormUrl);
@@ -1068,11 +1048,7 @@ if (settings.colorAccent) {
 
       function escapeHtml(value) {
         return String(value).replace(/[&<>"']/g, (char) => ({
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#039;"
+          "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
         }[char]));
       }
 
