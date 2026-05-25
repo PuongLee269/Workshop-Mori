@@ -3,41 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Điện Ảnh: Luật Hấp Dẫn Trong Tình Yêu | Mori Class</title>
   <meta
     name="description"
-    content="Workshop điện ảnh kết hợp tâm lý học, khoa học thần kinh và trải nghiệm kết nối sâu để khám phá Luật Hấp Dẫn trong tình yêu."
+    content="Workshop Điện Ảnh: Luật Hấp Dẫn Trong Tình Yêu - trải nghiệm điện ảnh, tâm lý học và khoa học thần kinh về tình yêu, thời gian và kết nối."
   />
+  <title>Điện Ảnh: Luật Hấp Dẫn Trong Tình Yêu | Mori Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800;900&family=Lora:ital,wght@1,600;1,700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --midnight: #07111f;
-      --midnight-2: #0d1a2b;
-      --black: #050608;
-      --shadow: #101010;
-      --amber: #f2b94b;
-      --amber-2: #ffd98a;
-      --blue: #4f9dcc;
-      --wine: #7a2534;
-      --text: #fff7e9;
-      --muted: #c6ced8;
-      --dim: #8f99a7;
-      --line: rgba(255, 247, 233, 0.14);
-      --panel: rgba(8, 14, 24, 0.78);
-      --panel-solid: #0d1522;
-      --radius: 8px;
-      --body-font: "Segoe UI", Arial, Tahoma, sans-serif;
-      --title-font: "Times New Roman", "Segoe UI", serif;
-      --base-font-size: 16px;
-      --h1-size: clamp(48px, 7.6vw, 104px);
-      --h2-size: clamp(34px, 4.8vw, 64px);
-      --lead-size: 21px;
-      --card-title-size: 25px;
-      --hero-image: url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1900&q=85");
-      font-family: var(--body-font);
-    }
-
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -45,19 +23,13 @@
     }
 
     body {
-      margin: 0;
-      background:
-        radial-gradient(circle at 80% 0%, rgba(79, 157, 204, 0.22), transparent 28rem),
-        radial-gradient(circle at 12% 12%, rgba(122, 37, 52, 0.32), transparent 28rem),
-        linear-gradient(180deg, var(--black) 0%, var(--midnight) 46%, #07090e 100%);
-      color: var(--text);
-      font-size: var(--base-font-size);
-      line-height: 1.58;
-    }
-
-    body::selection {
-      background: var(--amber);
-      color: #1b1206;
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: #fff7e8;
+      color: #171412;
+      font-family: "Be Vietnam Pro", "Segoe UI", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.65;
     }
 
     a {
@@ -66,504 +38,359 @@
     }
 
     img,
-    svg,
     video,
     iframe {
       display: block;
-      max-width: 100%;
+      width: 100%;
     }
 
-    .page {
-      overflow: hidden;
-    }
-
-    .shell {
-      width: min(1160px, calc(100% - 40px));
+    .container {
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .nav {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 30;
-      border-bottom: 1px solid rgba(255, 247, 233, 0.08);
-      background: rgba(5, 6, 8, 0.78);
-      backdrop-filter: blur(18px);
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(23, 20, 18, 0.08);
+      background: rgba(255, 247, 232, 0.92);
+      backdrop-filter: blur(14px);
     }
 
-    .nav-inner {
+    .nav {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      min-height: 76px;
+      gap: 24px;
+    }
+
+    .nav-links,
+    .nav-actions {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      min-height: 70px;
-      gap: 24px;
+      gap: 22px;
+    }
+
+    .nav-actions {
+      justify-content: flex-end;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      font-size: 22px;
       font-weight: 900;
-      letter-spacing: 0.02em;
-      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      text-align: center;
+      white-space: nowrap;
     }
 
-    .brand-mark {
-      display: grid;
-      width: 36px;
-      height: 36px;
-      place-items: center;
-      border: 1px solid rgba(242, 185, 75, 0.7);
-      border-radius: 50%;
-      color: var(--amber);
-      font-family: var(--title-font);
-      font-size: 20px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      color: var(--muted);
+    .nav a {
       font-size: 14px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .button {
+    .pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 50px;
-      padding: 0 24px;
-      border: 1px solid rgba(242, 185, 75, 0.62);
-      border-radius: var(--radius);
-      background: linear-gradient(135deg, var(--amber), var(--amber-2));
-      color: #1d1307;
+      gap: 10px;
+      min-height: 46px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 999px;
+      background: #171412;
+      color: #fff;
       font-weight: 900;
-      box-shadow: 0 18px 44px rgba(242, 185, 75, 0.24);
       cursor: pointer;
     }
 
-    .button:hover {
-      transform: translateY(-1px);
+    .pill.secondary {
+      background: #efc45b;
+      color: #171412;
     }
 
-    .button.dark {
-      background: rgba(255, 247, 233, 0.04);
-      color: var(--text);
-      border-color: rgba(255, 247, 233, 0.22);
-      box-shadow: none;
+    .pill.outline {
+      border: 1px solid rgba(23, 20, 18, 0.16);
+      background: transparent;
+      color: #171412;
     }
 
-    .eyebrow,
-    .kicker {
+    .eyebrow {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin: 0 0 14px;
-      color: var(--amber);
-      font-size: 12px;
+      margin-bottom: 22px;
+      color: #7b5224;
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
     }
 
-    .eyebrow::before,
-    .kicker::before {
-      content: "";
+    .eyebrow::before {
       width: 34px;
-      height: 1px;
-      background: currentColor;
+      height: 2px;
+      background: #d99b27;
+      content: "";
     }
 
     h1,
     h2,
     h3 {
-      margin: 0;
-      color: var(--text);
-      font-family: var(--title-font);
-      font-weight: 800;
       letter-spacing: 0;
       line-height: 1.04;
-      text-wrap: balance;
     }
 
     h1 {
-      max-width: 920px;
-      font-size: var(--h1-size);
-      text-shadow: 0 22px 70px rgba(0, 0, 0, 0.85);
+      max-width: 720px;
+      font-size: clamp(46px, 7vw, 84px);
+      font-weight: 900;
     }
 
     h2 {
-      font-size: var(--h2-size);
+      font-size: clamp(34px, 5vw, 58px);
+      font-weight: 900;
     }
 
     h3 {
-      font-size: var(--card-title-size);
+      font-size: 23px;
+      font-weight: 900;
     }
 
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      font-size: var(--lead-size);
+    .script {
+      font-family: "Lora", "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .section-copy,
+    .hero-text {
+      max-width: 640px;
+      color: #61584d;
+      font-size: 18px;
+      line-height: 1.82;
     }
 
     .hero {
-      position: relative;
-      min-height: 100svh;
       display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(320px, 0.98fr);
       align-items: center;
-      padding: 128px 0 72px;
-      isolation: isolate;
+      gap: 56px;
+      padding: 74px 0 86px;
     }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -3;
-      background:
-        linear-gradient(90deg, rgba(5, 6, 8, 0.92) 0%, rgba(5, 6, 8, 0.64) 48%, rgba(5, 6, 8, 0.2) 100%),
-        linear-gradient(180deg, rgba(5, 6, 8, 0.24) 0%, rgba(5, 6, 8, 0.88) 100%),
-        var(--hero-image) center / cover;
-      filter: saturate(0.92) contrast(1.08);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      background:
-        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 92px),
-        radial-gradient(circle at 74% 50%, rgba(242, 185, 75, 0.22), transparent 19rem);
-      opacity: 0.56;
-      pointer-events: none;
-    }
-
-    .hero-media {
-      position: absolute;
-      inset: 0;
-      z-index: -2;
-      overflow: hidden;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .hero.has-video .hero-media {
-      opacity: 1;
-    }
-
-    .hero-media video,
-    .hero-media iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      object-fit: cover;
-    }
-
-    .hero-copy {
-      max-width: 740px;
-    }
-
-    .hero-copy .lead {
-      margin-top: 22px;
-      max-width: 690px;
+    .hero-text {
+      margin: 26px 0 34px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      align-items: center;
       gap: 14px;
-      margin-top: 32px;
     }
 
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
+    .hero-media {
+      position: relative;
+      min-height: 620px;
+      overflow: hidden;
+      border-radius: 26px;
+      background:
+        linear-gradient(180deg, rgba(17, 17, 17, 0.05), rgba(17, 17, 17, 0.62)),
+        #dfc17b;
+      box-shadow: 0 26px 80px rgba(38, 30, 17, 0.2);
     }
 
-    .badge {
-      padding: 8px 11px;
-      border: 1px solid rgba(255, 247, 233, 0.14);
-      border-radius: 999px;
-      background: rgba(5, 6, 8, 0.48);
-      color: var(--muted);
-      font-size: 13px;
+    .hero-media img,
+    .hero-media video,
+    .hero-media iframe {
+      height: 620px;
+      border: 0;
+      object-fit: cover;
+      filter: saturate(0.95) contrast(1.05);
+    }
+
+    .hero-note {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+      max-width: 292px;
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 18px 50px rgba(22, 20, 18, 0.18);
+      color: #2a241d;
+      font-size: 14px;
       font-weight: 800;
+      line-height: 1.6;
     }
 
     section {
-      padding: 96px 0;
-      border-top: 1px solid rgba(255, 247, 233, 0.08);
+      padding: 88px 0;
     }
 
-    .section-head {
+    .light {
+      background: #fff;
+    }
+
+    .dark {
+      background: #171513;
+      color: #fff;
+    }
+
+    .dark .section-copy,
+    .dark .course p,
+    .dark .visual-note {
+      color: #d7cec1;
+    }
+
+    .section-heading {
       display: grid;
-      grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.54fr);
-      gap: 44px;
+      grid-template-columns: minmax(0, 0.82fr) minmax(280px, 0.55fr);
       align-items: end;
-      margin-bottom: 44px;
+      gap: 40px;
+      margin-bottom: 42px;
     }
 
-    .hook {
-      background:
-        radial-gradient(circle at 10% 18%, rgba(79, 157, 204, 0.18), transparent 24rem),
-        linear-gradient(180deg, rgba(13, 26, 43, 0.7), rgba(5, 6, 8, 0.96));
-    }
-
-    .hook-grid {
+    .cards {
       display: grid;
-      grid-template-columns: minmax(280px, 0.95fr) minmax(0, 1.05fr);
-      gap: 30px;
-      align-items: stretch;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
-    .media-frame {
-      position: relative;
-      min-height: 440px;
+    .card {
+      min-height: 265px;
+      padding: 28px;
+      border: 1px solid rgba(22, 20, 18, 0.08);
+      border-radius: 8px;
+      background: #fffaf1;
+    }
+
+    .card-icon {
+      display: inline-flex;
+      width: 54px;
+      height: 54px;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      border-radius: 50%;
+      background: #f1c55f;
+      color: #171412;
+      font-family: "Lora", serif;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: #645b51;
+      line-height: 1.74;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .experience {
       overflow: hidden;
-      border: 1px solid rgba(255, 247, 233, 0.14);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(5, 6, 8, 0.12), rgba(5, 6, 8, 0.68)),
-        url("https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1200&q=85") center / cover;
-      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+      border-radius: 8px;
+      background: #fff;
+      color: #171412;
     }
 
-    .media-frame iframe,
-    .media-frame video,
-    .media-frame img {
-      width: 100%;
-      height: 100%;
-      min-height: inherit;
-      border: 0;
+    .experience img {
+      height: 230px;
       object-fit: cover;
     }
 
-    .media-label {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      padding: 12px 14px;
-      border: 1px solid rgba(255, 247, 233, 0.16);
-      border-radius: var(--radius);
-      background: rgba(5, 6, 8, 0.72);
-      color: var(--muted);
+    .experience-content {
+      padding: 22px;
+    }
+
+    .experience h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .experience p {
+      color: #645b51;
+      font-size: 15px;
+      line-height: 1.72;
+    }
+
+    .visual-note {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(22, 20, 18, 0.1);
+      color: #746a5f;
       font-size: 13px;
-      font-weight: 800;
-      backdrop-filter: blur(12px);
+      font-weight: 700;
+      line-height: 1.55;
     }
 
-    .hook-copy {
-      display: grid;
-      align-content: center;
-      padding: 36px;
-      border: 1px solid rgba(255, 247, 233, 0.12);
-      border-radius: var(--radius);
-      background: var(--panel);
-    }
-
-    .hook-copy h2 {
-      margin-bottom: 22px;
-    }
-
-    .bullet-grid {
-      display: grid;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .bullet-grid li {
-      display: grid;
-      grid-template-columns: 38px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 16px;
-      border: 1px solid rgba(255, 247, 233, 0.1);
-      border-radius: var(--radius);
-      background: rgba(255, 247, 233, 0.035);
-      color: var(--muted);
-    }
-
-    .mini-icon {
-      display: grid;
-      width: 38px;
-      height: 38px;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(242, 185, 75, 0.13);
-      color: var(--amber);
-      font-weight: 900;
-    }
-
-    .bullet-grid strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--text);
-    }
-
-    .journey {
-      background:
-        linear-gradient(90deg, rgba(122, 37, 52, 0.14), transparent 44%),
-        var(--black);
+    .method {
+      background: #fff7e8;
     }
 
     .steps {
       display: grid;
-      gap: 18px;
-      counter-reset: journey;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .step-list {
+      display: grid;
+      gap: 16px;
     }
 
     .step {
-      display: grid;
-      grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
-      min-height: 290px;
-      overflow: hidden;
-      border: 1px solid rgba(255, 247, 233, 0.14);
-      border-radius: var(--radius);
-      background: var(--panel-solid);
-      counter-increment: journey;
-    }
-
-    .step:nth-child(even) {
-      grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
-    }
-
-    .step:nth-child(even) .step-media {
-      order: 2;
-    }
-
-    .step-media {
-      position: relative;
-      min-height: 290px;
-      background: var(--step-image) center / cover;
-    }
-
-    .step-media::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(5, 6, 8, 0.05), rgba(5, 6, 8, 0.62)),
-        radial-gradient(circle at 50% 42%, rgba(242, 185, 75, 0.2), transparent 16rem);
-    }
-
-    .step-number {
-      position: absolute;
-      left: 18px;
-      top: 18px;
-      z-index: 1;
-      display: grid;
-      width: 52px;
-      height: 52px;
-      place-items: center;
-      border: 1px solid rgba(242, 185, 75, 0.5);
-      border-radius: 50%;
-      background: rgba(5, 6, 8, 0.72);
-      color: var(--amber);
-      font-family: var(--title-font);
-      font-size: 24px;
-      font-weight: 900;
-    }
-
-    .step-body {
-      display: grid;
-      align-content: center;
-      gap: 16px;
-      padding: 34px;
-    }
-
-    .step-body p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 17px;
-    }
-
-    .visual-note {
-      padding: 12px 14px;
-      border-left: 2px solid var(--amber);
-      background: rgba(242, 185, 75, 0.07);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .tags {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 20px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 16px 44px rgba(42, 35, 25, 0.06);
     }
 
-    .tag {
-      padding: 6px 10px;
-      border: 1px solid rgba(255, 247, 233, 0.12);
-      border-radius: 999px;
-      color: var(--dim);
-      font-size: 12px;
-      font-weight: 800;
-    }
-
-    .audience {
-      background:
-        radial-gradient(circle at 80% 26%, rgba(79, 157, 204, 0.16), transparent 26rem),
-        var(--midnight);
-    }
-
-    .audience-cards {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-    }
-
-    .audience-card {
-      min-height: 260px;
-      padding: 24px;
-      border: 1px solid rgba(255, 247, 233, 0.13);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(180deg, rgba(255, 247, 233, 0.045), rgba(255, 247, 233, 0.015)),
-        rgba(5, 6, 8, 0.42);
-    }
-
-    .audience-icon {
-      display: grid;
-      width: 58px;
-      height: 58px;
-      margin-bottom: 42px;
-      place-items: center;
-      border: 1px solid rgba(242, 185, 75, 0.38);
+    .step span {
+      display: inline-flex;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      align-items: center;
+      justify-content: center;
       border-radius: 50%;
-      color: var(--amber);
-      font-family: var(--title-font);
-      font-size: 25px;
+      background: #171513;
+      color: #fff;
       font-weight: 900;
     }
 
-    .audience-card p {
-      margin: 12px 0 0;
-      color: var(--muted);
+    .step strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .step p {
+      color: #645b51;
     }
 
     .ticket {
-      background:
-        radial-gradient(circle at 14% 16%, rgba(122, 37, 52, 0.24), transparent 25rem),
-        #06080c;
+      padding: 88px 0;
+      background: #171513;
+      color: #fff;
     }
 
     .ticket-grid {
       display: grid;
-      grid-template-columns: minmax(280px, 0.82fr) minmax(320px, 1fr);
-      gap: 22px;
+      grid-template-columns: minmax(270px, 0.85fr) minmax(320px, 1fr);
+      gap: 24px;
       align-items: start;
     }
 
@@ -574,31 +401,28 @@
 
     .price-card,
     .form-panel {
-      border: 1px solid rgba(255, 247, 233, 0.13);
-      border-radius: var(--radius);
-      background: var(--panel);
-      box-shadow: 0 26px 80px rgba(0, 0, 0, 0.32);
+      border-radius: 8px;
+      background: #fff8ec;
+      color: #171412;
     }
 
     .price-card {
-      position: relative;
-      padding: 24px;
+      padding: 26px;
+      border: 2px solid transparent;
     }
 
     .price-card.featured {
-      border-color: rgba(242, 185, 75, 0.6);
-      background:
-        linear-gradient(135deg, rgba(242, 185, 75, 0.16), transparent 56%),
-        var(--panel);
+      border-color: #efc45b;
+      background: #f8df99;
     }
 
     .popular {
       display: inline-flex;
       margin-bottom: 14px;
-      padding: 5px 9px;
+      padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(242, 185, 75, 0.16);
-      color: var(--amber-2);
+      background: #171412;
+      color: #fff;
       font-size: 12px;
       font-weight: 900;
       text-transform: uppercase;
@@ -607,22 +431,20 @@
     .price {
       display: flex;
       align-items: baseline;
-      gap: 9px;
+      gap: 8px;
       margin: 12px 0;
-      color: var(--text);
       font-size: 34px;
       font-weight: 900;
     }
 
     .price span {
-      color: var(--dim);
+      color: #746a5f;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .price-card p {
-      margin: 0;
-      color: var(--muted);
+      color: #5f574d;
     }
 
     .form-panel {
@@ -645,7 +467,7 @@
     }
 
     label {
-      color: var(--muted);
+      color: #5f574d;
       font-size: 13px;
       font-weight: 800;
     }
@@ -656,10 +478,10 @@
       width: 100%;
       min-height: 48px;
       padding: 12px 13px;
-      border: 1px solid rgba(255, 247, 233, 0.18);
-      border-radius: var(--radius);
-      background: rgba(5, 6, 8, 0.78);
-      color: var(--text);
+      border: 1px solid rgba(22, 20, 18, 0.13);
+      border-radius: 8px;
+      background: #fff;
+      color: #171412;
       font: inherit;
       outline: none;
     }
@@ -672,399 +494,393 @@
     input:focus,
     select:focus,
     textarea:focus {
-      border-color: rgba(242, 185, 75, 0.76);
-      box-shadow: 0 0 0 3px rgba(242, 185, 75, 0.12);
+      border-color: #d99b27;
+      box-shadow: 0 0 0 3px rgba(217, 155, 39, 0.16);
     }
 
     .form-note {
-      margin: 12px 0 0;
-      color: var(--dim);
+      margin-top: 12px;
+      color: #746a5f;
       font-size: 13px;
     }
 
-    .footer {
-      padding: 46px 0;
-      border-top: 1px solid rgba(255, 247, 233, 0.1);
-      background: #050608;
+    .cta {
+      padding: 72px 0;
+      background: #efc45b;
+      color: #171412;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .cta h2 {
+      max-width: 760px;
+    }
+
+    footer {
+      padding: 58px 0;
+      background: #171513;
+      color: #fff;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 28px;
-      align-items: end;
+      grid-template-columns: 1.35fr repeat(3, 1fr);
+      gap: 30px;
     }
 
-    .footer p {
-      max-width: 670px;
-      margin: 12px 0 0;
-      color: var(--muted);
+    footer p,
+    footer li {
+      color: #c8c0b5;
+      line-height: 1.8;
     }
 
-    .socials {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: flex-end;
-      color: var(--muted);
-      font-weight: 800;
+    footer ul {
+      list-style: none;
     }
 
-    .socials a {
-      padding: 7px 0;
-      border-bottom: 1px solid rgba(242, 185, 75, 0.4);
+    footer h3 {
+      margin-bottom: 16px;
+      font-size: 16px;
     }
 
-    @media (max-width: 960px) {
-      .nav-links {
-        display: none;
-      }
-
-      .section-head,
-      .hook-grid,
-      .ticket-grid,
-      .step,
-      .step:nth-child(even) {
+    @media (max-width: 980px) {
+      .nav {
         grid-template-columns: 1fr;
+        padding: 18px 0;
+        text-align: center;
       }
 
-      .step:nth-child(even) .step-media {
-        order: 0;
+      .nav-links,
+      .nav-actions {
+        justify-content: center;
+        flex-wrap: wrap;
       }
 
-      .audience-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .shell {
-        width: min(100% - 28px, 1160px);
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 112px;
-      }
-
-      h1 {
-        font-size: 46px;
-      }
-
-      section {
-        padding: 68px 0;
-      }
-
-      .hook-copy,
-      .step-body,
-      .form-panel {
-        padding: 22px;
-      }
-
-      .media-frame,
-      .step-media {
-        min-height: 280px;
-      }
-
-      .audience-cards,
-      .form-grid,
+      .hero,
+      .section-heading,
+      .steps,
+      .ticket-grid,
+      .cta-row,
       .footer-grid {
         grid-template-columns: 1fr;
       }
 
-      .socials {
-        justify-content: flex-start;
+      .hero {
+        padding-top: 48px;
+      }
+
+      .hero-media,
+      .hero-media img,
+      .hero-media video,
+      .hero-media iframe {
+        min-height: 430px;
+        height: 430px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      h1 {
+        font-size: 44px;
+      }
+
+      section,
+      .ticket {
+        padding: 64px 0;
+      }
+
+      .hero-note {
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        max-width: none;
+      }
+
+      .experience-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header class="nav" aria-label="Điều hướng chính">
-      <div class="shell nav-inner">
-        <a class="brand" href="#top" aria-label="Mori Class">
-          <span class="brand-mark">M</span>
-          <span>Mori Class</span>
-        </a>
-        <nav class="nav-links" aria-label="Các phần của trang">
-          <a href="#hook">Vấn đề</a>
-          <a href="#journey">Lộ trình</a>
-          <a href="#audience">Dành cho ai</a>
-          <a href="#ticket">Đăng ký</a>
-        </nav>
+  <header class="topbar">
+    <nav class="container nav" aria-label="Điều hướng chính">
+      <div class="nav-links">
+        <a href="#hook">Vấn đề</a>
+        <a href="#journey">Lộ trình</a>
+        <a href="#audience">Dành cho ai</a>
       </div>
-    </header>
+      <a class="brand" href="#top">MORI CLASS</a>
+      <div class="nav-actions">
+        <a href="#ticket">Vé</a>
+        <a class="pill" href="#ticket">Đăng ký</a>
+      </div>
+    </nav>
+  </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-media" aria-hidden="true"></div>
-        <div class="shell hero-copy">
-          <p class="eyebrow">Workshop Điện Ảnh Độc Quyền</p>
-          <h1 id="hero-title">Điện ảnh mở khung hình. Tình yêu mở vô thức.</h1>
-          <p class="lead">
-            Một trải nghiệm điện ảnh, tâm lý học và khoa học thần kinh để giải mã vì sao ta bị thu hút,
-            vì sao ta lặp lại một kiểu yêu, và vì sao có những cuộc gặp khiến thời gian như biến mất.
+  <main id="top">
+    <section class="container hero">
+      <div>
+        <div class="eyebrow">Workshop Điện Ảnh</div>
+        <h1>Luật hấp dẫn trong <span class="script">tình yêu</span></h1>
+        <p class="hero-text">
+          Một workshop điện ảnh kết hợp tâm lý học và khoa học thần kinh để giải mã vì sao ta bị thu hút,
+          vì sao ta lặp lại một kiểu yêu, và vì sao có những cuộc gặp khiến thời gian như biến mất.
+        </p>
+        <div class="hero-actions">
+          <a class="pill" href="#ticket">Đăng Ký Ngay</a>
+          <a class="pill secondary" href="#journey">Xem lộ trình</a>
+        </div>
+      </div>
+      <div class="hero-media" id="heroMedia">
+        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=85" alt="Không gian rạp chiếu phim với ánh sáng cinematic">
+        <div class="hero-note">
+          Background video loop gợi ý: neon đêm, hành lang ký ức, chuyển động chậm, ánh hổ phách trên nền shadow black.
+        </div>
+      </div>
+    </section>
+
+    <section class="light" id="hook">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Tình yêu không chỉ là cảm xúc. Đó là một <span class="script">hệ tọa độ</span>.</h2>
+          <p class="section-copy">
+            Trang này được thiết kế để người xem hiểu ngay vấn đề: yêu, nhớ, chọn và bị thu hút đều có thể được đọc qua
+            thời gian, ký ức, não bộ và câu chuyện mà ta tự kể về mình.
           </p>
-          <div class="hero-actions">
-            <a class="button" href="#ticket">Đăng Ký Ngay</a>
-            <a class="button dark" href="#journey">Xem lộ trình</a>
-          </div>
-          <div class="hero-badges" aria-label="Điểm nổi bật workshop">
-            <span class="badge">Cinema Experience</span>
-            <span class="badge">Jung & Adler Psychology</span>
-            <span class="badge">Neuroscience of Attraction</span>
-          </div>
         </div>
-      </section>
-
-      <section class="hook" id="hook" aria-labelledby="hook-title">
-        <div class="shell hook-grid">
-          <div class="media-frame" id="hook-media" aria-label="Video giới thiệu workshop">
-            <div class="media-label">Video intro 1 phút: mood cinematic, neon, ký ức, nhịp cắt nhanh và lời dẫn ngắn.</div>
-          </div>
-
-          <div class="hook-copy">
-            <p class="kicker">The Hook</p>
-            <h2 id="hook-title">Tình yêu không chỉ là cảm xúc. Đó là một hệ tọa độ.</h2>
-            <ul class="bullet-grid">
-              <li>
-                <span class="mini-icon">T</span>
-                <span><strong>Thời gian có thể đánh lừa ta.</strong>Một ánh nhìn vài giây có thể đánh thức ký ức nhiều năm.</span>
-              </li>
-              <li>
-                <span class="mini-icon">L</span>
-                <span><strong>Luật hấp dẫn không chỉ là niềm tin.</strong>Nó có thể được nhìn qua chú ý, dopamine, dự đoán và mô thức gắn bó.</span>
-              </li>
-              <li>
-                <span class="mini-icon">P</span>
-                <span><strong>Tâm lý học giúp ta nhìn rõ.</strong>Jung, Adler và điện ảnh cho ta ngôn ngữ để đọc lại câu chuyện yêu của chính mình.</span>
-              </li>
-            </ul>
-          </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card-icon">T</div>
+            <h3>Thời gian đánh lừa ta</h3>
+            <p>Một ánh nhìn vài giây có thể đánh thức ký ức nhiều năm. Có những cuộc gặp không bắt đầu ở hiện tại.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">L</div>
+            <h3>Luật hấp dẫn có cơ chế</h3>
+            <p>Không chỉ là niềm tin. Ta nhìn nó qua chú ý, dopamine, dự đoán và mô thức gắn bó.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">P</div>
+            <h3>Tâm lý học giúp gọi tên</h3>
+            <p>Jung, Adler và điện ảnh cho ta ngôn ngữ để đọc lại hình mẫu vô thức trong tình yêu.</p>
+          </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="journey" id="journey" aria-labelledby="journey-title">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <p class="kicker">The 4-Part Journey</p>
-              <h2 id="journey-title">Một lộ trình rõ ràng, giàu hình ảnh, không tường chữ.</h2>
+    <section class="dark" id="journey">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Bốn chặng trải nghiệm <span class="script">không tường chữ</span></h2>
+          <p class="section-copy">
+            Layout dạng media grid giúp người xem quét nhanh: chơi, xem, thảo luận và bước vào cộng đồng.
+            Mỗi chặng có hình ảnh riêng để dễ nhớ và dễ chuyển đổi.
+          </p>
+        </div>
+        <div class="experience-grid">
+          <article class="experience">
+            <img src="https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=900&q=85" alt="Những lá bài kể chuyện và biểu tượng tâm lý">
+            <div class="experience-content">
+              <h3>01. Game & Science</h3>
+              <p>Xây dựng câu chuyện tình yêu bằng thẻ ngẫu nhiên, kỹ thuật Hollywood, Jung, Adler và neuroscience.</p>
+              <div class="visual-note">Visual: psychological tarot-like cards, brain waves, Jungian archetypes.</div>
             </div>
-            <p class="lead">
-              Bạn đi qua bốn chặng: tạo câu chuyện, xem phim, giải mã tâm lý và bước vào cộng đồng Mori Class.
-            </p>
-          </div>
-
-          <div class="steps">
-            <article class="step" style="--step-image: url('https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=1200&q=85');">
-              <div class="step-media">
-                <span class="step-number">01</span>
-              </div>
-              <div class="step-body">
-                <div class="tags">
-                  <span class="tag">Game & Science</span>
-                  <span class="tag">Story cards</span>
-                  <span class="tag">Jungian archetypes</span>
-                </div>
-                <h3>Game - Xây Dựng Câu Chuyện Tình Yêu</h3>
-                <p>
-                  Bốc lá bài, tạo tuyến truyện tình yêu và soi lại lựa chọn của mình qua kỹ thuật kể chuyện Hollywood,
-                  Carl Jung, Alfred Adler và khoa học thần kinh về lực hút.
-                </p>
-                <div class="visual-note">
-                  Hình ảnh gợi ý: bộ bài tâm lý như tarot điện ảnh, sóng não, archetype Jung, ánh sáng hổ phách trên nền đen.
-                </div>
-              </div>
-            </article>
-
-            <article class="step" style="--step-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=85');">
-              <div class="step-media">
-                <span class="step-number">02</span>
-              </div>
-              <div class="step-body">
-                <div class="tags">
-                  <span class="tag">Watch Movie</span>
-                  <span class="tag">Collective screening</span>
-                  <span class="tag">Cinematic mood</span>
-                </div>
-                <h3>Cinema Time - Xem Phim</h3>
-                <p>
-                  Cả phòng bước vào một trải nghiệm xem phim chung, nơi ánh sáng, nhạc, cú dựng và im lặng đều trở thành
-                  dữ liệu cảm xúc để quan sát chính mình.
-                </p>
-                <div class="visual-note">
-                  Hình ảnh gợi ý: rạp chiếu tối, luồng máy chiếu, ghế ngồi chìm trong bóng, màn hình lớn có chiều sâu.
-                </div>
-              </div>
-            </article>
-
-            <article class="step" style="--step-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=85');">
-              <div class="step-media">
-                <span class="step-number">03</span>
-              </div>
-              <div class="step-body">
-                <div class="tags">
-                  <span class="tag">Discussion</span>
-                  <span class="tag">Deep sharing</span>
-                  <span class="tag">Emotional connection</span>
-                </div>
-                <h3>Connection - Giao Lưu & Thảo Luận</h3>
-                <p>
-                  Không tranh luận để thắng. Ta cùng bóc tách nhân vật, biểu tượng, mô thức yêu và những câu chuyện cá nhân
-                  trong một không gian ấm, rõ ràng và tôn trọng.
-                </p>
-                <div class="visual-note">
-                  Hình ảnh gợi ý: nhóm nhỏ thảo luận, ánh đèn bàn ấm, cận cảnh ánh mắt, giấy note, cảm giác thân mật.
-                </div>
-              </div>
-            </article>
-
-            <article class="step" style="--step-image: url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=85');">
-              <div class="step-media">
-                <span class="step-number">04</span>
-              </div>
-              <div class="step-body">
-                <div class="tags">
-                  <span class="tag">Mori Class</span>
-                  <span class="tag">Exclusive club</span>
-                  <span class="tag">Community</span>
-                </div>
-                <h3>Community - Tuyển Thành Viên Mori Class</h3>
-                <p>
-                  Nếu bạn muốn tiếp tục xem, đọc, nghĩ và kết nối sâu hơn, workshop mở lời mời bước vào Mori Class:
-                  cộng đồng nhỏ dành cho người yêu điện ảnh và tư duy nội tâm.
-                </p>
-                <div class="visual-note">
-                  Hình ảnh gợi ý: huy hiệu CLB, collage thành viên, khung hình động chào mừng, cảm giác riêng tư và chọn lọc.
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="audience" id="audience" aria-labelledby="audience-title">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <p class="kicker">Who Is This For?</p>
-              <h2 id="audience-title">Dành cho những người muốn hiểu tình yêu sâu hơn bề mặt.</h2>
+          </article>
+          <article class="experience">
+            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=85" alt="Không gian xem phim với ánh đèn mờ">
+            <div class="experience-content">
+              <h3>02. Watch Movie</h3>
+              <p>Một trải nghiệm xem phim tập thể, nơi hình ảnh, nhạc và khoảng lặng trở thành dữ liệu cảm xúc.</p>
+              <div class="visual-note">Visual: theater layout, dim lights, projector beam, cinematic depth.</div>
             </div>
-            <p class="lead">
-              Không cần nền tảng học thuật. Chỉ cần bạn tò mò, thích quan sát và muốn gặp những cuộc trò chuyện thật.
-            </p>
-          </div>
-
-          <div class="audience-cards">
-            <article class="audience-card">
-              <div class="audience-icon">C</div>
-              <h3>The Cinema Lover</h3>
-              <p>Yêu điện ảnh và muốn xem phim như một bản đồ cảm xúc, biểu tượng và ký ức.</p>
-            </article>
-            <article class="audience-card">
-              <div class="audience-icon">Ψ</div>
-              <h3>The Psychology Enthusiast</h3>
-              <p>Tò mò về Jung, Adler, vô thức, mô thức gắn bó và cách ta chọn người mình yêu.</p>
-            </article>
-            <article class="audience-card">
-              <div class="audience-icon">∞</div>
-              <h3>The Seeker of Connection</h3>
-              <p>Muốn gặp những người nói chuyện sâu, lắng nghe kỹ và không ngại đi vào câu hỏi khó.</p>
-            </article>
-            <article class="audience-card">
-              <div class="audience-icon">N</div>
-              <h3>The Science-Curious</h3>
-              <p>Muốn hiểu phần khoa học phía sau hấp dẫn: chú ý, dopamine, dự đoán và ký ức.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="ticket" id="ticket" aria-labelledby="ticket-title">
-        <div class="shell">
-          <div class="section-head">
-            <div>
-              <p class="kicker">Registration & Tickets</p>
-              <h2 id="ticket-title">Giữ ghế trước khi căn phòng tối khép lại.</h2>
+          </article>
+          <article class="experience">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=85" alt="Nhóm nhỏ trò chuyện thân mật">
+            <div class="experience-content">
+              <h3>03. Discussion</h3>
+              <p>Giải mã nhân vật, biểu tượng, mô thức yêu và chia sẻ câu chuyện cá nhân trong không gian ấm.</p>
+              <div class="visual-note">Visual: warm group discussion, close faces, notes, emotional connection.</div>
             </div>
-            <p class="lead">
-              Số lượng chỗ ngồi giới hạn để phần chia sẻ đủ riêng tư, đủ tập trung và đủ an toàn.
-            </p>
-          </div>
-
-          <div class="ticket-grid">
-            <div class="pricing">
-              <article class="price-card featured">
-                <span class="popular">Most Popular</span>
-                <h3>Early Bird</h3>
-                <div class="price">299.000đ <span>/ người</span></div>
-                <p>Ưu đãi cho những ghế đầu tiên. Bao gồm workshop, xem phim, thảo luận và cơ hội nhận lời mời vào Mori Class.</p>
-              </article>
-              <article class="price-card">
-                <h3>Standard</h3>
-                <div class="price">399.000đ <span>/ người</span></div>
-                <p>Vé tiêu chuẩn sau Early Bird. Thời gian, địa điểm và phim chiếu sẽ được gửi sau khi xác nhận đăng ký.</p>
-              </article>
+          </article>
+          <article class="experience">
+            <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=85" alt="Cộng đồng workshop thân mật">
+            <div class="experience-content">
+              <h3>04. Mori Class</h3>
+              <p>Lời mời vào cộng đồng nhỏ dành cho người yêu điện ảnh, tư duy nội tâm và kết nối sâu.</p>
+              <div class="visual-note">Visual: club badge, community collage, welcoming dynamic video.</div>
             </div>
-
-            <form class="form-panel" action="#" method="post">
-              <div class="form-grid">
-                <div class="field">
-                  <label for="name">Họ và tên</label>
-                  <input id="name" name="name" type="text" placeholder="Tên của bạn" required />
-                </div>
-                <div class="field">
-                  <label for="phone">Số điện thoại</label>
-                  <input id="phone" name="phone" type="tel" placeholder="09..." required />
-                </div>
-                <div class="field">
-                  <label for="email">Email</label>
-                  <input id="email" name="email" type="email" placeholder="you@example.com" required />
-                </div>
-                <div class="field">
-                  <label for="ticket-type">Loại vé</label>
-                  <select id="ticket-type" name="ticket-type" required>
-                    <option value="">Chọn loại vé</option>
-                    <option value="early-bird">Early Bird</option>
-                    <option value="standard">Standard</option>
-                  </select>
-                </div>
-                <div class="field full">
-                  <label for="story">Một câu hỏi bạn mang đến workshop</label>
-                  <textarea id="story" name="story" placeholder="Ví dụ: Vì sao mình cứ bị thu hút bởi cùng một kiểu người?"></textarea>
-                </div>
-                <div class="field full">
-                  <button class="button" type="submit">Đăng Ký Ngay</button>
-                  <p class="form-note">Mori Class sẽ liên hệ để xác nhận ghế, hướng dẫn thanh toán và gửi thông tin chi tiết.</p>
-                </div>
-              </div>
-            </form>
-          </div>
+          </article>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
 
-    <footer class="footer">
-      <div class="shell footer-grid">
+    <section class="method" id="audience">
+      <div class="container steps">
         <div>
-          <a class="brand" href="#top" aria-label="Mori Class">
-            <span class="brand-mark">M</span>
-            <span>Mori Class</span>
-          </a>
-          <p>
-            Mori Class là không gian dành cho những người yêu điện ảnh, tâm lý học và những cuộc trò chuyện có chiều sâu.
+          <div class="eyebrow">Dành cho ai?</div>
+          <h2>Người xem phim bằng cả trí tuệ lẫn <span class="script">trái tim</span></h2>
+          <p class="section-copy">
+            Không cần nền tảng học thuật. Chỉ cần bạn tò mò, thích quan sát và muốn tham gia những cuộc trò chuyện thật.
           </p>
-          <p>Liên hệ: moriclass@example.com · 0900 000 000</p>
         </div>
-        <div class="socials" aria-label="Mạng xã hội">
-          <a href="#" aria-label="Facebook Mori Class">Facebook</a>
-          <a href="#" aria-label="Instagram Mori Class">Instagram</a>
-          <a href="#" aria-label="TikTok Mori Class">TikTok</a>
+        <div class="step-list">
+          <div class="step">
+            <span>1</span>
+            <div>
+              <strong>The Cinema Lover</strong>
+              <p>Yêu điện ảnh và muốn đọc phim như bản đồ cảm xúc, ký ức và biểu tượng.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span>2</span>
+            <div>
+              <strong>The Psychology Enthusiast</strong>
+              <p>Tò mò về Jung, Adler, vô thức, mô thức gắn bó và cách ta chọn người mình yêu.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span>3</span>
+            <div>
+              <strong>The Seeker of Connection</strong>
+              <p>Muốn gặp những người nói chuyện sâu, lắng nghe kỹ và không ngại đi vào câu hỏi khó.</p>
+            </div>
+          </div>
+          <div class="step">
+            <span>4</span>
+            <div>
+              <strong>The Science-Curious</strong>
+              <p>Muốn hiểu phần khoa học phía sau hấp dẫn: chú ý, dopamine, dự đoán và ký ức.</p>
+            </div>
+          </div>
         </div>
       </div>
-    </footer>
-  </div>
+    </section>
+
+    <section class="ticket" id="ticket">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Giữ ghế trước khi căn phòng tối <span class="script">khép lại</span></h2>
+          <p class="section-copy">
+            Số lượng chỗ ngồi giới hạn để phần chia sẻ đủ riêng tư, đủ tập trung và đủ an toàn.
+          </p>
+        </div>
+        <div class="ticket-grid">
+          <div class="pricing">
+            <article class="price-card featured">
+              <span class="popular">Most Popular</span>
+              <h3>Early Bird</h3>
+              <div class="price">299.000đ <span>/ người</span></div>
+              <p>Ưu đãi cho những ghế đầu tiên. Bao gồm workshop, xem phim, thảo luận và cơ hội nhận lời mời vào Mori Class.</p>
+            </article>
+            <article class="price-card">
+              <h3>Standard</h3>
+              <div class="price">399.000đ <span>/ người</span></div>
+              <p>Vé tiêu chuẩn sau Early Bird. Thời gian, địa điểm và phim chiếu sẽ được gửi sau khi xác nhận đăng ký.</p>
+            </article>
+          </div>
+
+          <form class="form-panel" action="#" method="post">
+            <div class="form-grid">
+              <div class="field">
+                <label for="name">Họ và tên</label>
+                <input id="name" name="name" type="text" placeholder="Tên của bạn" required />
+              </div>
+              <div class="field">
+                <label for="phone">Số điện thoại</label>
+                <input id="phone" name="phone" type="tel" placeholder="09..." required />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required />
+              </div>
+              <div class="field">
+                <label for="ticket-type">Loại vé</label>
+                <select id="ticket-type" name="ticket-type" required>
+                  <option value="">Chọn loại vé</option>
+                  <option value="early-bird">Early Bird</option>
+                  <option value="standard">Standard</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="story">Một câu hỏi bạn mang đến workshop</label>
+                <textarea id="story" name="story" placeholder="Ví dụ: Vì sao mình cứ bị thu hút bởi cùng một kiểu người?"></textarea>
+              </div>
+              <div class="field full">
+                <button class="pill" type="submit">Đăng Ký Ngay</button>
+                <p class="form-note">Mori Class sẽ liên hệ để xác nhận ghế, hướng dẫn thanh toán và gửi thông tin chi tiết.</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-row">
+        <h2>Sẵn sàng xem lại tình yêu bằng một ngôn ngữ khác?</h2>
+        <a class="pill" href="#ticket">Giữ ghế ngay</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand" style="text-align:left">MORI CLASS</div>
+        <p>Không gian dành cho người yêu điện ảnh, tâm lý học và những cuộc trò chuyện có chiều sâu.</p>
+      </div>
+      <div>
+        <h3>Workshop</h3>
+        <ul>
+          <li>Điện ảnh</li>
+          <li>Tâm lý học</li>
+          <li>Khoa học thần kinh</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Cộng đồng</h3>
+        <ul>
+          <li>Mori Class</li>
+          <li>Deep talk</li>
+          <li>Movie night</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Liên hệ</h3>
+        <ul>
+          <li>moriclass@example.com</li>
+          <li>0900 000 000</li>
+          <li>Facebook · Instagram · TikTok</li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
   <script>
     (function () {
@@ -1080,30 +896,26 @@
       }
 
       const textTargets = {
-        navBrand: ".brand span:last-child",
+        navBrand: ".brand",
         heroEyebrow: ".hero .eyebrow",
-        heroTitle: "#hero-title",
-        heroSubtitle: ".hero .lead",
-        ctaText: ".hero-actions .button:first-child",
-        introKicker: "#hook .kicker",
-        introTitle: "#hook-title",
-        journeyKicker: "#journey .kicker",
-        journeyTitle: "#journey-title",
-        journeyLead: "#journey .section-head .lead",
-        part1Title: ".step:nth-child(1) h3",
-        part1Body: ".step:nth-child(1) .step-body p",
-        part2Title: ".step:nth-child(2) h3",
-        part2Body: ".step:nth-child(2) .step-body p",
-        part3Title: ".step:nth-child(3) h3",
-        part3Body: ".step:nth-child(3) .step-body p",
-        part4Title: ".step:nth-child(4) h3",
-        part4Body: ".step:nth-child(4) .step-body p",
-        audienceKicker: "#audience .kicker",
-        audienceTitle: "#audience-title",
-        audienceLead: "#audience .section-head .lead",
-        ticketKicker: "#ticket .kicker",
-        ticketTitle: "#ticket-title",
-        ticketLead: "#ticket .section-head .lead",
+        heroTitle: ".hero h1",
+        heroSubtitle: ".hero-text",
+        ctaText: ".hero-actions .pill:first-child",
+        introTitle: "#hook h2",
+        journeyTitle: "#journey h2",
+        journeyLead: "#journey .section-copy",
+        part1Title: ".experience:nth-child(1) h3",
+        part1Body: ".experience:nth-child(1) p",
+        part2Title: ".experience:nth-child(2) h3",
+        part2Body: ".experience:nth-child(2) p",
+        part3Title: ".experience:nth-child(3) h3",
+        part3Body: ".experience:nth-child(3) p",
+        part4Title: ".experience:nth-child(4) h3",
+        part4Body: ".experience:nth-child(4) p",
+        audienceTitle: "#audience h2",
+        audienceLead: "#audience .section-copy",
+        ticketTitle: "#ticket h2",
+        ticketLead: "#ticket .section-copy",
         earlyTitle: ".price-card:nth-child(1) h3",
         earlyPrice: ".price-card:nth-child(1) .price",
         earlyDescription: ".price-card:nth-child(1) p",
@@ -1112,9 +924,7 @@
         standardDescription: ".price-card:nth-child(2) p",
         formQuestionLabel: "label[for='story']",
         formQuestionPlaceholder: "#story",
-        formNote: ".form-note",
-        footerDescription: ".footer p:nth-of-type(1)",
-        footerContact: ".footer p:nth-of-type(2)"
+        formNote: ".form-note"
       };
 
       Object.entries(textTargets).forEach(([key, selector]) => {
@@ -1128,38 +938,25 @@
         });
       });
 
-      const root = document.documentElement;
-      if (settings.bodyFont) root.style.setProperty("--body-font", settings.bodyFont);
-      if (settings.titleFont) root.style.setProperty("--title-font", settings.titleFont);
-      if (settings.baseFontSize) root.style.setProperty("--base-font-size", `${settings.baseFontSize}px`);
-      if (settings.h1Size) root.style.setProperty("--h1-size", `clamp(${settings.h1Size - 12}px, 7.6vw, ${settings.h1Size}px)`);
-      if (settings.h2Size) root.style.setProperty("--h2-size", `clamp(${settings.h2Size - 10}px, 4.8vw, ${settings.h2Size}px)`);
-      if (settings.leadSize) root.style.setProperty("--lead-size", `${settings.leadSize}px`);
-      if (settings.cardTitleSize) root.style.setProperty("--card-title-size", `${settings.cardTitleSize}px`);
-      if (settings.heroImage) root.style.setProperty("--hero-image", `url("${settings.heroImage}")`);
-
-      const hero = document.querySelector(".hero");
-      const heroMedia = document.querySelector(".hero-media");
-      if (hero && heroMedia && settings.heroVideo) {
-        renderMedia(heroMedia, settings.heroVideo, "Background video");
-        hero.classList.add("has-video");
+      if (settings.heroImage) {
+        document.querySelector("#heroMedia img")?.setAttribute("src", settings.heroImage);
       }
-
-      const hookMedia = document.querySelector("#hook-media");
-      if (hookMedia && settings.visualMedia) {
-        renderMedia(hookMedia, settings.visualMedia, "Workshop intro video");
+      if (settings.heroVideo) {
+        renderMedia(document.querySelector("#heroMedia"), settings.heroVideo, "Background video");
       }
 
       function renderMedia(container, url, title) {
+        if (!container) return;
         const youtubeId = getYouTubeId(url);
         const isVideoFile = /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
+        const note = container.querySelector(".hero-note")?.outerHTML || "";
         if (youtubeId) {
-          container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&playsinline=1&rel=0" title="${title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+          container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&playsinline=1&rel=0" title="${title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>${note}`;
           return;
         }
         container.innerHTML = isVideoFile
-          ? `<video src="${url}" autoplay muted loop playsinline></video>`
-          : `<img src="${url}" alt="" />`;
+          ? `<video src="${url}" autoplay muted loop playsinline></video>${note}`
+          : `<img src="${url}" alt="">${note}`;
       }
 
       function getYouTubeId(url) {
