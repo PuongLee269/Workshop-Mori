@@ -478,14 +478,22 @@
           </div>
           <div class="grid">
             <div class="field full">
-              <label for="heroImage">Ảnh nền hero</label>
-              <input id="heroImage" name="heroImage" placeholder="https://..." />
-              <span class="hint">Nếu để trống, trang dùng ảnh mặc định.</span>
+              <label for="heroMediaUrl">Ảnh hoặc video cho khung đầu tiên</label>
+              <input id="heroMediaUrl" name="heroMediaUrl" placeholder="https://... ảnh, video .mp4/.webm hoặc YouTube" />
+              <span class="hint">Một ô duy nhất cho ảnh hoặc video. Video file sẽ tự phát, thử bật tiếng, ẩn controls mặc định và chỉ hiện controls khi hover.</span>
             </div>
-            <div class="field full">
-              <label for="heroVideo">Video nền hero</label>
-              <input id="heroVideo" name="heroVideo" placeholder="video.mp4 hoặc https://..." />
-              <span class="hint">Video sẽ nằm dưới lớp màu cinematic. Để trống nếu chỉ muốn dùng ảnh.</span>
+            <div class="field">
+              <label for="heroMediaFit">Cách khớp khung đầu tiên</label>
+              <select id="heroMediaFit" name="heroMediaFit">
+                <option value="auto">Auto theo ngang/dọc</option>
+                <option value="cover">Cover - phủ kín khung</option>
+                <option value="contain">Contain - không cắt video</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="heroVideo">Video nền hero cũ</label>
+              <input id="heroVideo" name="heroVideo" placeholder="Không cần dùng nếu đã điền ô trên" />
+              <span class="hint">Giữ để tương thích dữ liệu cũ. Ô ảnh/video đầu tiên ở trên sẽ được ưu tiên.</span>
             </div>
             <div class="field full">
               <label for="visualMedia">Media cho khối “Ánh đèn neon...”</label>
@@ -601,7 +609,9 @@
       googleFormUrl: "",
       footerDescription: "Mori Class là không gian dành cho những người yêu điện ảnh, tâm lý học và những cuộc trò chuyện có chiều sâu.",
       footerContact: "Liên hệ: moriclass@example.com · 0900 000 000",
-      heroImage: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85",
+      heroMediaUrl: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1800&q=85",
+      heroMediaFit: "auto",
+      heroImage: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1800&q=85",
       heroVideo: "",
       visualMedia: "",
       bodyFont: '"Be Vietnam Pro", "Segoe UI", Arial, sans-serif',

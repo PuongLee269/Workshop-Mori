@@ -208,9 +208,21 @@
       box-shadow: 0 26px 80px rgba(38, 30, 17, 0.2);
     }
 
+    .hero-media::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background:
+        radial-gradient(circle at 50% 38%, rgba(239, 196, 91, 0.24), transparent 21rem),
+        linear-gradient(180deg, #d7bd77, #675a38);
+      content: "";
+    }
+
     .hero-media img,
     .hero-media video,
     .hero-media iframe {
+      position: relative;
+      z-index: 1;
       height: 620px;
       border: 0;
       object-fit: cover;
@@ -230,6 +242,19 @@
       object-fit: cover;
     }
 
+    .hero-media.fit-cover img,
+    .hero-media.fit-cover video {
+      object-fit: cover;
+    }
+
+    .hero-media.fit-contain img,
+    .hero-media.fit-contain video {
+      object-fit: contain;
+      background:
+        radial-gradient(circle at 50% 35%, rgba(239, 196, 91, 0.18), transparent 22rem),
+        #111;
+    }
+
     .hero-note {
       position: absolute;
       right: 24px;
@@ -243,6 +268,22 @@
       font-size: 14px;
       font-weight: 800;
       line-height: 1.6;
+      z-index: 2;
+    }
+
+    .hero-fallback {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      height: 620px;
+      place-items: center;
+      padding: 28px;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(17, 17, 17, 0.2), rgba(17, 17, 17, 0.72)),
+        #6b5b37;
+      font-weight: 900;
+      text-align: center;
     }
 
     section {
@@ -687,7 +728,7 @@
         </div>
       </div>
       <div class="hero-media" id="heroMedia">
-        <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1400&q=85" alt="Không gian rạp chiếu phim với ánh sáng cinematic">
+        <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1400&q=85" alt="Không gian rạp chiếu phim với ánh sáng cinematic">
         <div class="hero-note">
           Background video loop gợi ý: neon đêm, hành lang ký ức, chuyển động chậm, ánh hổ phách trên nền shadow black.
         </div>
@@ -949,12 +990,8 @@
         });
       });
 
-      if (settings.heroImage) {
-        document.querySelector("#heroMedia img")?.setAttribute("src", settings.heroImage);
-      }
-      if (settings.heroVideo) {
-        renderMedia(document.querySelector("#heroMedia"), settings.heroVideo, "Background video");
-      }
+      const heroMediaUrl = settings.heroMediaUrl || settings.heroVideo || settings.heroImage;
+      if (heroMediaUrl) renderMedia(document.querySelector("#heroMedia"), heroMediaUrl, "Hero media", settings.heroMediaFit || "auto");
       if (settings.bodyFont) document.documentElement.style.setProperty("--body-font", settings.bodyFont);
       if (settings.titleFont) {
         document.documentElement.style.setProperty("--title-font", settings.titleFont);
@@ -968,10 +1005,13 @@
         });
       }
 
-      function renderMedia(container, url, title) {
+      function renderMedia(container, url, title, fit = "auto") {
         if (!container) return;
+        container.classList.remove("is-portrait", "is-landscape", "fit-cover", "fit-contain");
+        if (fit === "cover") container.classList.add("fit-cover");
+        if (fit === "contain") container.classList.add("fit-contain");
         const youtubeId = getYouTubeId(url);
-        const isVideoFile = /\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(url);
+        const isVideoFile = isDirectVideo(url);
         const note = container.querySelector(".hero-note")?.outerHTML || "";
         if (youtubeId) {
           container.innerHTML = `<iframe src="https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&controls=0&loop=1&playlist=${youtubeId}&playsinline=1&rel=0&modestbranding=1" title="${title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>${note}`;
@@ -980,12 +1020,12 @@
         container.innerHTML = isVideoFile
           ? `<video src="${url}" autoplay loop playsinline preload="metadata"></video>${note}`
           : `<img src="${url}" alt="">${note}`;
-        prepareHeroMedia(container);
+        prepareHeroMedia(container, fit);
       }
 
-      prepareHeroMedia(document.querySelector("#heroMedia"));
+      prepareHeroMedia(document.querySelector("#heroMedia"), settings.heroMediaFit || "auto");
 
-      function prepareHeroMedia(container) {
+      function prepareHeroMedia(container, fit = "auto") {
         if (!container) return;
         const media = container.querySelector("video, img");
         if (!media) return;
@@ -994,8 +1034,10 @@
           const width = media.videoWidth || media.naturalWidth || 0;
           const height = media.videoHeight || media.naturalHeight || 0;
           if (!width || !height) return;
-          container.classList.toggle("is-portrait", height > width);
-          container.classList.toggle("is-landscape", width >= height);
+          if (fit === "auto") {
+            container.classList.toggle("is-portrait", height > width);
+            container.classList.toggle("is-landscape", width >= height);
+          }
         };
 
         if (media.tagName === "VIDEO") {
@@ -1003,6 +1045,7 @@
           media.muted = false;
           media.volume = 1;
           media.addEventListener("loadedmetadata", setOrientation, { once: true });
+          media.addEventListener("error", () => showMediaError(container));
           media.addEventListener("mouseenter", () => { media.controls = true; });
           media.addEventListener("mouseleave", () => { media.controls = false; });
           media.play().catch(() => {
@@ -1014,6 +1057,22 @@
 
         if (media.complete) setOrientation();
         media.addEventListener("load", setOrientation, { once: true });
+        media.addEventListener("error", () => showMediaError(container), { once: true });
+      }
+
+      function showMediaError(container) {
+        const note = container.querySelector(".hero-note")?.outerHTML || "";
+        container.innerHTML = `<div class="hero-fallback">Không tải được media. Hãy kiểm tra link ảnh/video trong Admin.</div>${note}`;
+      }
+
+      function isDirectVideo(url) {
+        try {
+          const parsed = new URL(url, window.location.href);
+          const path = parsed.pathname.toLowerCase();
+          return /\.(mp4|webm|ogg|mov|m4v)$/.test(path) || parsed.searchParams.get("format") === "mp4";
+        } catch {
+          return /\.(mp4|webm|ogg|mov|m4v)(\?.*)?$/i.test(url);
+        }
       }
 
       function getYouTubeId(url) {
