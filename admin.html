@@ -456,6 +456,11 @@
               <textarea id="formNote" name="formNote"></textarea>
             </div>
             <div class="field full">
+              <label for="googleFormUrl">Link Google Form đăng ký</label>
+              <input id="googleFormUrl" name="googleFormUrl" placeholder="https://forms.gle/... hoặc https://docs.google.com/forms/..." />
+              <span class="hint">Các nút đăng ký trên landing page sẽ mở link này trong tab mới.</span>
+            </div>
+            <div class="field full">
               <label for="footerDescription">Mô tả Mori Class</label>
               <textarea id="footerDescription" name="footerDescription"></textarea>
             </div>
@@ -499,19 +504,29 @@
             <div class="field">
               <label for="bodyFont">Font nội dung</label>
               <select id="bodyFont" name="bodyFont">
+                <option value='"Be Vietnam Pro", "Segoe UI", Arial, sans-serif'>Be Vietnam Pro</option>
+                <option value='Inter, "Segoe UI", Arial, sans-serif'>Inter</option>
+                <option value='Manrope, "Segoe UI", Arial, sans-serif'>Manrope</option>
+                <option value='Montserrat, "Segoe UI", Arial, sans-serif'>Montserrat</option>
                 <option value='"Segoe UI", Arial, Tahoma, sans-serif'>Segoe UI</option>
                 <option value='Arial, Tahoma, sans-serif'>Arial</option>
                 <option value='Tahoma, Arial, sans-serif'>Tahoma</option>
-                <option value='"Roboto", "Segoe UI", Arial, sans-serif'>Roboto</option>
               </select>
             </div>
             <div class="field">
               <label for="titleFont">Font tiêu đề</label>
               <select id="titleFont" name="titleFont">
-                <option value='"Times New Roman", "Segoe UI", serif'>Times New Roman</option>
-                <option value='"Segoe UI", Arial, sans-serif'>Segoe UI</option>
-                <option value='Georgia, "Times New Roman", serif'>Georgia</option>
-                <option value='Arial, Tahoma, sans-serif'>Arial</option>
+                <option value='"Playfair Display", Lora, "Times New Roman", serif'>Playfair Display</option>
+                <option value='"Bodoni Moda", "Times New Roman", serif'>Bodoni Moda</option>
+                <option value='Cinzel, "Times New Roman", serif'>Cinzel</option>
+                <option value='"Cormorant Garamond", "Times New Roman", serif'>Cormorant Garamond</option>
+                <option value='"DM Serif Display", "Times New Roman", serif'>DM Serif Display</option>
+                <option value='Fraunces, "Times New Roman", serif'>Fraunces</option>
+                <option value='Marcellus, "Times New Roman", serif'>Marcellus</option>
+                <option value='Forum, "Times New Roman", serif'>Forum</option>
+                <option value='Prata, "Times New Roman", serif'>Prata</option>
+                <option value='Lora, "Times New Roman", serif'>Lora</option>
+                <option value='"Libre Baskerville", "Times New Roman", serif'>Libre Baskerville</option>
               </select>
             </div>
             <div class="field">
@@ -583,13 +598,14 @@
       formQuestionLabel: "Một câu hỏi bạn mang đến workshop",
       formQuestionPlaceholder: "Ví dụ: Vì sao mình cứ bị thu hút bởi cùng một kiểu người?",
       formNote: "Mori Class sẽ liên hệ để xác nhận ghế, hướng dẫn thanh toán và gửi thông tin chi tiết.",
+      googleFormUrl: "",
       footerDescription: "Mori Class là không gian dành cho những người yêu điện ảnh, tâm lý học và những cuộc trò chuyện có chiều sâu.",
       footerContact: "Liên hệ: moriclass@example.com · 0900 000 000",
       heroImage: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85",
       heroVideo: "",
       visualMedia: "",
-      bodyFont: '"Segoe UI", Arial, Tahoma, sans-serif',
-      titleFont: '"Times New Roman", "Segoe UI", serif',
+      bodyFont: '"Be Vietnam Pro", "Segoe UI", Arial, sans-serif',
+      titleFont: '"Playfair Display", Lora, "Times New Roman", serif',
       baseFontSize: 16,
       leadSize: 20,
       h1Size: 94,
