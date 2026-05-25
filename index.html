@@ -928,6 +928,13 @@
         heroSubtitle: ".hero-text",
         ctaText: ".hero-actions .pill:first-child",
         introTitle: "#hook h2",
+        introLead: "#hook .section-copy",
+        hookCard1Title: "#hook .card:nth-child(1) h3",
+        hookCard1Body: "#hook .card:nth-child(1) p",
+        hookCard2Title: "#hook .card:nth-child(2) h3",
+        hookCard2Body: "#hook .card:nth-child(2) p",
+        hookCard3Title: "#hook .card:nth-child(3) h3",
+        hookCard3Body: "#hook .card:nth-child(3) p",
         journeyTitle: "#journey h2",
         journeyLead: "#journey .section-copy",
         part1Title: ".experience:nth-child(1) h3",
@@ -940,6 +947,14 @@
         part4Body: ".experience:nth-child(4) p",
         audienceTitle: "#audience h2",
         audienceLead: "#audience .section-copy",
+        audience1Title: "#audience .step:nth-child(1) strong",
+        audience1Body: "#audience .step:nth-child(1) p",
+        audience2Title: "#audience .step:nth-child(2) strong",
+        audience2Body: "#audience .step:nth-child(2) p",
+        audience3Title: "#audience .step:nth-child(3) strong",
+        audience3Body: "#audience .step:nth-child(3) p",
+        audience4Title: "#audience .step:nth-child(4) strong",
+        audience4Body: "#audience .step:nth-child(4) p",
         ticketTitle: "#ticket h2",
         ticketLead: "#ticket .section-copy",
         earlyTitle: ".price-card:nth-child(1) h3",
@@ -948,9 +963,16 @@
         standardTitle: ".price-card:nth-child(2) h3",
         standardPrice: ".price-card:nth-child(2) .price",
         standardDescription: ".price-card:nth-child(2) p",
-        formQuestionLabel: "label[for='story']",
-        formQuestionPlaceholder: "#story",
-        formNote: ".form-note"
+        registrationTitle: ".registration-panel h3",
+        registrationDescription: ".registration-panel .section-copy",
+        registrationButtonText: ".registration-link",
+        formNote: ".form-note",
+        finalCtaTitle: ".cta h2",
+        finalCtaText: ".cta .pill",
+        footerDescription: "footer .footer-grid > div:first-child p",
+        footerCol1Title: "footer .footer-grid > div:nth-child(2) h3",
+        footerCol2Title: "footer .footer-grid > div:nth-child(3) h3",
+        footerCol3Title: "footer .footer-grid > div:nth-child(4) h3"
       };
 
       Object.entries(textTargets).forEach(([key, selector]) => {
@@ -977,6 +999,31 @@
           link.setAttribute("target", "_blank");
           link.setAttribute("rel", "noopener");
         });
+      }
+      setFooterItems(2, settings.footerCol1Items);
+      setFooterItems(3, settings.footerCol2Items);
+      setFooterItems(4, settings.footerCol3Items);
+
+      function setFooterItems(columnIndex, value) {
+        if (!value) return;
+        const list = document.querySelector(`footer .footer-grid > div:nth-child(${columnIndex}) ul`);
+        if (!list) return;
+        list.innerHTML = value
+          .split(/\r?\n/)
+          .map((item) => item.trim())
+          .filter(Boolean)
+          .map((item) => `<li>${escapeHtml(item)}</li>`)
+          .join("");
+      }
+
+      function escapeHtml(value) {
+        return String(value).replace(/[&<>"']/g, (char) => ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#039;"
+        }[char]));
       }
 
       function renderMedia(container, url, title, fit = "auto") {

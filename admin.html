@@ -17,21 +17,9 @@
       font-family: "Segoe UI", Arial, Tahoma, sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text); line-height: 1.55; }
+    a { color: inherit; text-decoration: none; }
 
     .topbar {
       position: sticky;
@@ -52,31 +40,12 @@
       margin: 0 auto;
     }
 
-    h1,
-    h2 {
-      margin: 0;
-      line-height: 1.15;
-    }
+    h1, h2 { margin: 0; line-height: 1.15; }
+    h1 { font-size: 22px; }
+    .sub { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; justify-content: flex-end; }
 
-    h1 {
-      font-size: 22px;
-    }
-
-    .sub {
-      margin: 4px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: flex-end;
-    }
-
-    button,
-    .button {
+    button, .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -91,28 +60,11 @@
       cursor: pointer;
     }
 
-    button.primary {
-      border-color: rgba(215, 163, 74, 0.55);
-      background: var(--accent);
-      color: #211707;
-    }
+    button.primary { border-color: rgba(215, 163, 74, 0.55); background: var(--accent); color: #211707; }
+    button.danger { border-color: rgba(216, 93, 93, 0.45); color: #ffd6d6; }
 
-    button.danger {
-      border-color: rgba(216, 93, 93, 0.45);
-      color: #ffd6d6;
-    }
-
-    main {
-      width: min(1180px, calc(100% - 32px));
-      margin: 26px auto 56px;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 220px minmax(0, 1fr);
-      gap: 18px;
-      align-items: start;
-    }
+    main { width: min(1180px, calc(100% - 32px)); margin: 26px auto 56px; }
+    .layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 18px; align-items: start; }
 
     .tabs {
       position: sticky;
@@ -125,17 +77,8 @@
       background: var(--panel);
     }
 
-    .tab {
-      justify-content: flex-start;
-      width: 100%;
-      background: transparent;
-      color: var(--muted);
-    }
-
-    .tab.active {
-      background: var(--panel-2);
-      color: var(--text);
-    }
+    .tab { justify-content: flex-start; width: 100%; background: transparent; color: var(--muted); }
+    .tab.active { background: var(--panel-2); color: var(--text); }
 
     .section {
       display: none;
@@ -145,47 +88,15 @@
       overflow: hidden;
     }
 
-    .section.active {
-      display: block;
-    }
+    .section.active { display: block; }
+    .section-head { padding: 20px; border-bottom: 1px solid var(--line); background: rgba(255,255,255,0.025); }
+    .section-head p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; padding: 20px; }
+    .field { display: grid; gap: 7px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--muted); font-size: 13px; font-weight: 700; }
 
-    .section-head {
-      padding: 20px;
-      border-bottom: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.025);
-    }
-
-    .section-head p {
-      margin: 6px 0 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      padding: 20px;
-    }
-
-    .field {
-      display: grid;
-      gap: 7px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       min-height: 44px;
       padding: 10px 12px;
@@ -197,63 +108,33 @@
       outline: none;
     }
 
-    textarea {
-      min-height: 118px;
-      resize: vertical;
-    }
-
-    input[type="range"] {
-      padding: 0;
-      accent-color: var(--accent);
-    }
-
-    .hint {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    textarea { min-height: 112px; resize: vertical; }
+    input[type="range"] { padding: 0; accent-color: var(--accent); }
+    .hint { color: var(--muted); font-size: 12px; }
 
     .toast {
       position: fixed;
       right: 18px;
       bottom: 18px;
       z-index: 20;
-      max-width: 320px;
+      max-width: 340px;
       padding: 12px 14px;
       border: 1px solid rgba(215, 163, 74, 0.45);
       border-radius: 8px;
       background: #1f1a10;
-      color: var(--text);
       opacity: 0;
       transform: translateY(12px);
       transition: opacity 160ms ease, transform 160ms ease;
       pointer-events: none;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .toast.show { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 860px) {
-      .topbar-inner,
-      .layout,
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .topbar-inner {
-        align-items: flex-start;
-        padding: 14px 0;
-      }
-
-      .actions {
-        justify-content: flex-start;
-      }
-
-      .tabs {
-        position: static;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .topbar-inner, .layout, .grid { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; padding: 14px 0; }
+      .actions { justify-content: flex-start; }
+      .tabs { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
   </style>
 </head>
@@ -262,7 +143,7 @@
     <div class="topbar-inner">
       <div>
         <h1>Admin Mori Landing</h1>
-        <p class="sub">Chỉnh nội dung, media, font và kích thước chữ. Dữ liệu lưu trong trình duyệt của máy này.</p>
+        <p class="sub">Các tab đã khớp với cấu trúc hiện tại của index.html.</p>
       </div>
       <div class="actions">
         <button class="primary" id="saveBtn" type="button">Lưu thay đổi</button>
@@ -275,288 +156,145 @@
   <main>
     <div class="layout">
       <nav class="tabs" aria-label="Nhóm chỉnh sửa">
-        <button class="tab active" type="button" data-tab="content">Nội dung chính</button>
-        <button class="tab" type="button" data-tab="journey">Hành trình</button>
-        <button class="tab" type="button" data-tab="ticket">Vé & footer</button>
-        <button class="tab" type="button" data-tab="media">Hình ảnh & video</button>
-        <button class="tab" type="button" data-tab="type">Font & size</button>
+        <button class="tab active" type="button" data-tab="hero">Hero</button>
+        <button class="tab" type="button" data-tab="hook">Hook cards</button>
+        <button class="tab" type="button" data-tab="journey">Lộ trình</button>
+        <button class="tab" type="button" data-tab="audience">Đối tượng</button>
+        <button class="tab" type="button" data-tab="ticket">Vé & CTA</button>
+        <button class="tab" type="button" data-tab="footer">Footer</button>
+        <button class="tab" type="button" data-tab="media">Media</button>
+        <button class="tab" type="button" data-tab="type">Font</button>
       </nav>
 
       <form id="settingsForm">
-        <section class="section active" data-section="content">
+        <section class="section active" data-section="hero">
           <div class="section-head">
-            <h2>Nội dung chính</h2>
-            <p>Phần hero, hook và đối tượng tham gia.</p>
+            <h2>Hero</h2>
+            <p>Nav, tiêu đề đầu trang và CTA chính.</p>
           </div>
           <div class="grid">
-            <div class="field">
-              <label for="navBrand">Tên thương hiệu</label>
-              <input id="navBrand" name="navBrand" />
-            </div>
-            <div class="field">
-              <label for="heroEyebrow">Eyebrow hero</label>
-              <input id="heroEyebrow" name="heroEyebrow" />
-            </div>
-            <div class="field full">
-              <label for="heroTitle">Tiêu đề hero</label>
-              <textarea id="heroTitle" name="heroTitle"></textarea>
-            </div>
-            <div class="field full">
-              <label for="heroSubtitle">Mô tả hero</label>
-              <textarea id="heroSubtitle" name="heroSubtitle"></textarea>
-            </div>
-            <div class="field">
-              <label for="ctaText">Nút CTA</label>
-              <input id="ctaText" name="ctaText" />
-            </div>
-            <div class="field">
-              <label for="introKicker">Kicker intro</label>
-              <input id="introKicker" name="introKicker" />
-            </div>
-            <div class="field full">
-              <label for="visualTitle">Ghi chú visual</label>
-              <textarea id="visualTitle" name="visualTitle"></textarea>
-            </div>
-            <div class="field full">
-              <label for="visualDescription">Mô tả visual</label>
-              <textarea id="visualDescription" name="visualDescription"></textarea>
-            </div>
-            <div class="field full">
-              <label for="introQuote">Quote intro</label>
-              <textarea id="introQuote" name="introQuote"></textarea>
-            </div>
-            <div class="field full">
-              <label for="introTitle">Tiêu đề intro</label>
-              <textarea id="introTitle" name="introTitle"></textarea>
-            </div>
-            <div class="field full">
-              <label for="introBody1">Đoạn intro 1</label>
-              <textarea id="introBody1" name="introBody1"></textarea>
-            </div>
-            <div class="field full">
-              <label for="introBody2">Đoạn intro 2</label>
-              <textarea id="introBody2" name="introBody2"></textarea>
-            </div>
-            <div class="field full">
-              <label for="audienceTitle">Tiêu đề đối tượng</label>
-              <textarea id="audienceTitle" name="audienceTitle"></textarea>
-            </div>
-            <div class="field full">
-              <label for="audienceLead">Mô tả đối tượng</label>
-              <textarea id="audienceLead" name="audienceLead"></textarea>
-            </div>
+            <div class="field"><label for="navBrand">Tên thương hiệu</label><input id="navBrand" name="navBrand" /></div>
+            <div class="field"><label for="heroEyebrow">Eyebrow</label><input id="heroEyebrow" name="heroEyebrow" /></div>
+            <div class="field full"><label for="heroTitle">Tiêu đề hero</label><textarea id="heroTitle" name="heroTitle"></textarea></div>
+            <div class="field full"><label for="heroSubtitle">Mô tả hero</label><textarea id="heroSubtitle" name="heroSubtitle"></textarea></div>
+            <div class="field"><label for="ctaText">Text nút đăng ký</label><input id="ctaText" name="ctaText" /></div>
+          </div>
+        </section>
+
+        <section class="section" data-section="hook">
+          <div class="section-head">
+            <h2>Hook cards</h2>
+            <p>Section đặt vấn đề với 3 thẻ thông tin.</p>
+          </div>
+          <div class="grid">
+            <div class="field full"><label for="introTitle">Tiêu đề Hook</label><textarea id="introTitle" name="introTitle"></textarea></div>
+            <div class="field full"><label for="introLead">Mô tả Hook</label><textarea id="introLead" name="introLead"></textarea></div>
+            <div class="field"><label for="hookCard1Title">Card 1 - tiêu đề</label><input id="hookCard1Title" name="hookCard1Title" /></div>
+            <div class="field"><label for="hookCard2Title">Card 2 - tiêu đề</label><input id="hookCard2Title" name="hookCard2Title" /></div>
+            <div class="field full"><label for="hookCard1Body">Card 1 - mô tả</label><textarea id="hookCard1Body" name="hookCard1Body"></textarea></div>
+            <div class="field full"><label for="hookCard2Body">Card 2 - mô tả</label><textarea id="hookCard2Body" name="hookCard2Body"></textarea></div>
+            <div class="field"><label for="hookCard3Title">Card 3 - tiêu đề</label><input id="hookCard3Title" name="hookCard3Title" /></div>
+            <div class="field full"><label for="hookCard3Body">Card 3 - mô tả</label><textarea id="hookCard3Body" name="hookCard3Body"></textarea></div>
           </div>
         </section>
 
         <section class="section" data-section="journey">
           <div class="section-head">
-            <h2>Hành trình workshop</h2>
-            <p>Chỉnh tiêu đề và mô tả cho 4 phần trải nghiệm.</p>
+            <h2>Lộ trình</h2>
+            <p>Media grid 4 phần trong section tối.</p>
           </div>
           <div class="grid">
-            <div class="field">
-              <label for="journeyKicker">Kicker</label>
-              <input id="journeyKicker" name="journeyKicker" />
-            </div>
-            <div class="field full">
-              <label for="journeyTitle">Tiêu đề section</label>
-              <textarea id="journeyTitle" name="journeyTitle"></textarea>
-            </div>
-            <div class="field full">
-              <label for="journeyLead">Mô tả section</label>
-              <textarea id="journeyLead" name="journeyLead"></textarea>
-            </div>
-            <div class="field">
-              <label for="part1Title">Phần 1 - tiêu đề</label>
-              <input id="part1Title" name="part1Title" />
-            </div>
-            <div class="field">
-              <label for="part2Title">Phần 2 - tiêu đề</label>
-              <input id="part2Title" name="part2Title" />
-            </div>
-            <div class="field full">
-              <label for="part1Body">Phần 1 - mô tả</label>
-              <textarea id="part1Body" name="part1Body"></textarea>
-            </div>
-            <div class="field full">
-              <label for="part2Body">Phần 2 - mô tả</label>
-              <textarea id="part2Body" name="part2Body"></textarea>
-            </div>
-            <div class="field">
-              <label for="part3Title">Phần 3 - tiêu đề</label>
-              <input id="part3Title" name="part3Title" />
-            </div>
-            <div class="field">
-              <label for="part4Title">Phần 4 - tiêu đề</label>
-              <input id="part4Title" name="part4Title" />
-            </div>
-            <div class="field full">
-              <label for="part3Body">Phần 3 - mô tả</label>
-              <textarea id="part3Body" name="part3Body"></textarea>
-            </div>
-            <div class="field full">
-              <label for="part4Body">Phần 4 - mô tả</label>
-              <textarea id="part4Body" name="part4Body"></textarea>
-            </div>
+            <div class="field full"><label for="journeyTitle">Tiêu đề lộ trình</label><textarea id="journeyTitle" name="journeyTitle"></textarea></div>
+            <div class="field full"><label for="journeyLead">Mô tả lộ trình</label><textarea id="journeyLead" name="journeyLead"></textarea></div>
+            <div class="field"><label for="part1Title">Phần 1 - tiêu đề</label><input id="part1Title" name="part1Title" /></div>
+            <div class="field"><label for="part2Title">Phần 2 - tiêu đề</label><input id="part2Title" name="part2Title" /></div>
+            <div class="field full"><label for="part1Body">Phần 1 - mô tả</label><textarea id="part1Body" name="part1Body"></textarea></div>
+            <div class="field full"><label for="part2Body">Phần 2 - mô tả</label><textarea id="part2Body" name="part2Body"></textarea></div>
+            <div class="field"><label for="part3Title">Phần 3 - tiêu đề</label><input id="part3Title" name="part3Title" /></div>
+            <div class="field"><label for="part4Title">Phần 4 - tiêu đề</label><input id="part4Title" name="part4Title" /></div>
+            <div class="field full"><label for="part3Body">Phần 3 - mô tả</label><textarea id="part3Body" name="part3Body"></textarea></div>
+            <div class="field full"><label for="part4Body">Phần 4 - mô tả</label><textarea id="part4Body" name="part4Body"></textarea></div>
+          </div>
+        </section>
+
+        <section class="section" data-section="audience">
+          <div class="section-head">
+            <h2>Đối tượng</h2>
+            <p>Section “Dành cho ai?” dạng step-list.</p>
+          </div>
+          <div class="grid">
+            <div class="field full"><label for="audienceTitle">Tiêu đề đối tượng</label><textarea id="audienceTitle" name="audienceTitle"></textarea></div>
+            <div class="field full"><label for="audienceLead">Mô tả đối tượng</label><textarea id="audienceLead" name="audienceLead"></textarea></div>
+            <div class="field"><label for="audience1Title">Nhóm 1 - tiêu đề</label><input id="audience1Title" name="audience1Title" /></div>
+            <div class="field"><label for="audience2Title">Nhóm 2 - tiêu đề</label><input id="audience2Title" name="audience2Title" /></div>
+            <div class="field full"><label for="audience1Body">Nhóm 1 - mô tả</label><textarea id="audience1Body" name="audience1Body"></textarea></div>
+            <div class="field full"><label for="audience2Body">Nhóm 2 - mô tả</label><textarea id="audience2Body" name="audience2Body"></textarea></div>
+            <div class="field"><label for="audience3Title">Nhóm 3 - tiêu đề</label><input id="audience3Title" name="audience3Title" /></div>
+            <div class="field"><label for="audience4Title">Nhóm 4 - tiêu đề</label><input id="audience4Title" name="audience4Title" /></div>
+            <div class="field full"><label for="audience3Body">Nhóm 3 - mô tả</label><textarea id="audience3Body" name="audience3Body"></textarea></div>
+            <div class="field full"><label for="audience4Body">Nhóm 4 - mô tả</label><textarea id="audience4Body" name="audience4Body"></textarea></div>
           </div>
         </section>
 
         <section class="section" data-section="ticket">
           <div class="section-head">
-            <h2>Vé & footer</h2>
-            <p>Chỉnh giá vé, câu hỏi form, thông tin liên hệ.</p>
+            <h2>Vé & CTA</h2>
+            <p>Pricing, panel Google Form và CTA cuối trang.</p>
           </div>
           <div class="grid">
-            <div class="field">
-              <label for="ticketKicker">Kicker vé</label>
-              <input id="ticketKicker" name="ticketKicker" />
-            </div>
-            <div class="field full">
-              <label for="ticketTitle">Tiêu đề vé</label>
-              <textarea id="ticketTitle" name="ticketTitle"></textarea>
-            </div>
-            <div class="field full">
-              <label for="ticketLead">Mô tả vé</label>
-              <textarea id="ticketLead" name="ticketLead"></textarea>
-            </div>
-            <div class="field">
-              <label for="earlyTitle">Tên vé Early Bird</label>
-              <input id="earlyTitle" name="earlyTitle" />
-            </div>
-            <div class="field">
-              <label for="earlyPrice">Giá Early Bird</label>
-              <input id="earlyPrice" name="earlyPrice" />
-            </div>
-            <div class="field full">
-              <label for="earlyDescription">Mô tả Early Bird</label>
-              <textarea id="earlyDescription" name="earlyDescription"></textarea>
-            </div>
-            <div class="field">
-              <label for="standardTitle">Tên vé Standard</label>
-              <input id="standardTitle" name="standardTitle" />
-            </div>
-            <div class="field">
-              <label for="standardPrice">Giá Standard</label>
-              <input id="standardPrice" name="standardPrice" />
-            </div>
-            <div class="field full">
-              <label for="standardDescription">Mô tả Standard</label>
-              <textarea id="standardDescription" name="standardDescription"></textarea>
-            </div>
-            <div class="field">
-              <label for="formQuestionLabel">Nhãn câu hỏi form</label>
-              <input id="formQuestionLabel" name="formQuestionLabel" />
-            </div>
-            <div class="field">
-              <label for="formQuestionPlaceholder">Placeholder câu hỏi</label>
-              <input id="formQuestionPlaceholder" name="formQuestionPlaceholder" />
-            </div>
-            <div class="field full">
-              <label for="formNote">Ghi chú dưới form</label>
-              <textarea id="formNote" name="formNote"></textarea>
-            </div>
-            <div class="field full">
-              <label for="googleFormUrl">Link Google Form đăng ký</label>
-              <input id="googleFormUrl" name="googleFormUrl" placeholder="https://forms.gle/... hoặc https://docs.google.com/forms/..." />
-              <span class="hint">Các nút đăng ký trên landing page sẽ mở link này trong tab mới.</span>
-            </div>
-            <div class="field full">
-              <label for="footerDescription">Mô tả Mori Class</label>
-              <textarea id="footerDescription" name="footerDescription"></textarea>
-            </div>
-            <div class="field full">
-              <label for="footerContact">Liên hệ</label>
-              <input id="footerContact" name="footerContact" />
-            </div>
+            <div class="field full"><label for="ticketTitle">Tiêu đề vé</label><textarea id="ticketTitle" name="ticketTitle"></textarea></div>
+            <div class="field full"><label for="ticketLead">Mô tả vé</label><textarea id="ticketLead" name="ticketLead"></textarea></div>
+            <div class="field"><label for="earlyTitle">Tên vé Early Bird</label><input id="earlyTitle" name="earlyTitle" /></div>
+            <div class="field"><label for="earlyPrice">Giá Early Bird</label><input id="earlyPrice" name="earlyPrice" /></div>
+            <div class="field full"><label for="earlyDescription">Mô tả Early Bird</label><textarea id="earlyDescription" name="earlyDescription"></textarea></div>
+            <div class="field"><label for="standardTitle">Tên vé Standard</label><input id="standardTitle" name="standardTitle" /></div>
+            <div class="field"><label for="standardPrice">Giá Standard</label><input id="standardPrice" name="standardPrice" /></div>
+            <div class="field full"><label for="standardDescription">Mô tả Standard</label><textarea id="standardDescription" name="standardDescription"></textarea></div>
+            <div class="field"><label for="registrationTitle">Tiêu đề panel đăng ký</label><input id="registrationTitle" name="registrationTitle" /></div>
+            <div class="field"><label for="registrationButtonText">Text nút Google Form</label><input id="registrationButtonText" name="registrationButtonText" /></div>
+            <div class="field full"><label for="registrationDescription">Mô tả panel đăng ký</label><textarea id="registrationDescription" name="registrationDescription"></textarea></div>
+            <div class="field full"><label for="formNote">Ghi chú dưới nút đăng ký</label><textarea id="formNote" name="formNote"></textarea></div>
+            <div class="field full"><label for="googleFormUrl">Link Google Form đăng ký</label><input id="googleFormUrl" name="googleFormUrl" placeholder="https://forms.gle/... hoặc https://docs.google.com/forms/..." /></div>
+            <div class="field full"><label for="finalCtaTitle">Tiêu đề CTA vàng cuối trang</label><textarea id="finalCtaTitle" name="finalCtaTitle"></textarea></div>
+            <div class="field"><label for="finalCtaText">Text nút CTA cuối</label><input id="finalCtaText" name="finalCtaText" /></div>
+          </div>
+        </section>
+
+        <section class="section" data-section="footer">
+          <div class="section-head">
+            <h2>Footer</h2>
+            <p>Thông tin cuối trang.</p>
+          </div>
+          <div class="grid">
+            <div class="field full"><label for="footerDescription">Mô tả Mori Class</label><textarea id="footerDescription" name="footerDescription"></textarea></div>
+            <div class="field"><label for="footerCol1Title">Cột 1 - tiêu đề</label><input id="footerCol1Title" name="footerCol1Title" /></div>
+            <div class="field"><label for="footerCol2Title">Cột 2 - tiêu đề</label><input id="footerCol2Title" name="footerCol2Title" /></div>
+            <div class="field full"><label for="footerCol1Items">Cột 1 - nội dung</label><textarea id="footerCol1Items" name="footerCol1Items"></textarea></div>
+            <div class="field full"><label for="footerCol2Items">Cột 2 - nội dung</label><textarea id="footerCol2Items" name="footerCol2Items"></textarea></div>
+            <div class="field"><label for="footerCol3Title">Cột 3 - tiêu đề</label><input id="footerCol3Title" name="footerCol3Title" /></div>
+            <div class="field full"><label for="footerCol3Items">Cột 3 - nội dung</label><textarea id="footerCol3Items" name="footerCol3Items"></textarea></div>
           </div>
         </section>
 
         <section class="section" data-section="media">
           <div class="section-head">
-            <h2>Hình ảnh & video</h2>
-            <p>Dán URL ảnh/video online hoặc đường dẫn local mà trình duyệt có thể đọc.</p>
+            <h2>Media</h2>
+            <p>Khung ảnh/video đầu tiên trong hero.</p>
           </div>
           <div class="grid">
-            <div class="field full">
-              <label for="heroMediaUrl">Ảnh hoặc video cho khung đầu tiên</label>
-              <input id="heroMediaUrl" name="heroMediaUrl" placeholder="https://... ảnh, video .mp4/.webm hoặc YouTube" />
-              <span class="hint">Một ô duy nhất cho ảnh hoặc video. Video file sẽ tự phát, thử bật tiếng, ẩn controls mặc định và chỉ hiện controls khi hover.</span>
-            </div>
-            <div class="field">
-              <label for="heroMediaFit">Cách khớp khung đầu tiên</label>
-              <select id="heroMediaFit" name="heroMediaFit">
-                <option value="auto">Auto theo ngang/dọc</option>
-                <option value="cover">Cover - phủ kín khung</option>
-                <option value="contain">Contain - không cắt video</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="heroVideo">Video nền hero cũ</label>
-              <input id="heroVideo" name="heroVideo" placeholder="Không cần dùng nếu đã điền ô trên" />
-              <span class="hint">Giữ để tương thích dữ liệu cũ. Ô ảnh/video đầu tiên ở trên sẽ được ưu tiên.</span>
-            </div>
-            <div class="field full">
-              <label for="visualMedia">Media cho khối “Ánh đèn neon...”</label>
-              <input id="visualMedia" name="visualMedia" placeholder="cinematic.mp4 hoặc https://..." />
-              <span class="hint">Dán link YouTube Shorts/watch/youtu.be hoặc video .mp4, .webm, .ogg, .mov; link ảnh sẽ hiển thị ảnh.</span>
-            </div>
+            <div class="field full"><label for="heroMediaUrl">Ảnh hoặc video cho khung đầu tiên</label><input id="heroMediaUrl" name="heroMediaUrl" placeholder="https://... ảnh, video .mp4/.webm hoặc YouTube" /></div>
+            <div class="field"><label for="heroMediaFit">Cách khớp khung</label><select id="heroMediaFit" name="heroMediaFit"><option value="auto">Auto theo ngang/dọc</option><option value="cover">Cover - phủ kín khung</option><option value="contain">Contain - không cắt video</option></select></div>
           </div>
         </section>
 
         <section class="section" data-section="type">
           <div class="section-head">
-            <h2>Font & kích thước chữ</h2>
-            <p>Chọn font an toàn tiếng Việt và chỉnh size theo cảm giác thị giác.</p>
+            <h2>Font</h2>
+            <p>Font Google hiện đại, thiên hướng điện ảnh/nghệ thuật.</p>
           </div>
           <div class="grid">
-            <div class="field">
-              <label for="bodyFont">Font nội dung</label>
-              <select id="bodyFont" name="bodyFont">
-                <option value='"Be Vietnam Pro", "Segoe UI", Arial, sans-serif'>Be Vietnam Pro</option>
-                <option value='Inter, "Segoe UI", Arial, sans-serif'>Inter</option>
-                <option value='Manrope, "Segoe UI", Arial, sans-serif'>Manrope</option>
-                <option value='Montserrat, "Segoe UI", Arial, sans-serif'>Montserrat</option>
-                <option value='"Segoe UI", Arial, Tahoma, sans-serif'>Segoe UI</option>
-                <option value='Arial, Tahoma, sans-serif'>Arial</option>
-                <option value='Tahoma, Arial, sans-serif'>Tahoma</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="titleFont">Font tiêu đề</label>
-              <select id="titleFont" name="titleFont">
-                <option value='"Playfair Display", Lora, "Times New Roman", serif'>Playfair Display</option>
-                <option value='"Bodoni Moda", "Times New Roman", serif'>Bodoni Moda</option>
-                <option value='Cinzel, "Times New Roman", serif'>Cinzel</option>
-                <option value='"Cormorant Garamond", "Times New Roman", serif'>Cormorant Garamond</option>
-                <option value='"DM Serif Display", "Times New Roman", serif'>DM Serif Display</option>
-                <option value='Fraunces, "Times New Roman", serif'>Fraunces</option>
-                <option value='Marcellus, "Times New Roman", serif'>Marcellus</option>
-                <option value='Forum, "Times New Roman", serif'>Forum</option>
-                <option value='Prata, "Times New Roman", serif'>Prata</option>
-                <option value='Lora, "Times New Roman", serif'>Lora</option>
-                <option value='"Libre Baskerville", "Times New Roman", serif'>Libre Baskerville</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="baseFontSize">Cỡ chữ nội dung: <span data-value="baseFontSize"></span>px</label>
-              <input id="baseFontSize" name="baseFontSize" type="range" min="14" max="20" step="1" />
-            </div>
-            <div class="field">
-              <label for="leadSize">Cỡ chữ mô tả: <span data-value="leadSize"></span>px</label>
-              <input id="leadSize" name="leadSize" type="range" min="16" max="26" step="1" />
-            </div>
-            <div class="field">
-              <label for="h1Size">Cỡ chữ hero tối đa: <span data-value="h1Size"></span>px</label>
-              <input id="h1Size" name="h1Size" type="range" min="56" max="112" step="2" />
-            </div>
-            <div class="field">
-              <label for="h2Size">Cỡ chữ section tối đa: <span data-value="h2Size"></span>px</label>
-              <input id="h2Size" name="h2Size" type="range" min="38" max="72" step="2" />
-            </div>
-            <div class="field">
-              <label for="cardTitleSize">Cỡ tiêu đề card: <span data-value="cardTitleSize"></span>px</label>
-              <input id="cardTitleSize" name="cardTitleSize" type="range" min="20" max="34" step="1" />
-            </div>
+            <div class="field"><label for="bodyFont">Font nội dung</label><select id="bodyFont" name="bodyFont"><option value='"Be Vietnam Pro", "Segoe UI", Arial, sans-serif'>Be Vietnam Pro</option><option value='Inter, "Segoe UI", Arial, sans-serif'>Inter</option><option value='Manrope, "Segoe UI", Arial, sans-serif'>Manrope</option><option value='Montserrat, "Segoe UI", Arial, sans-serif'>Montserrat</option><option value='"Segoe UI", Arial, Tahoma, sans-serif'>Segoe UI</option></select></div>
+            <div class="field"><label for="titleFont">Font tiêu đề</label><select id="titleFont" name="titleFont"><option value='"Playfair Display", Lora, "Times New Roman", serif'>Playfair Display</option><option value='"Bodoni Moda", "Times New Roman", serif'>Bodoni Moda</option><option value='Cinzel, "Times New Roman", serif'>Cinzel</option><option value='"Cormorant Garamond", "Times New Roman", serif'>Cormorant Garamond</option><option value='"DM Serif Display", "Times New Roman", serif'>DM Serif Display</option><option value='Fraunces, "Times New Roman", serif'>Fraunces</option><option value='Marcellus, "Times New Roman", serif'>Marcellus</option><option value='Forum, "Times New Roman", serif'>Forum</option><option value='Prata, "Times New Roman", serif'>Prata</option><option value='Lora, "Times New Roman", serif'>Lora</option><option value='"Libre Baskerville", "Times New Roman", serif'>Libre Baskerville</option></select></div>
           </div>
         </section>
       </form>
@@ -568,98 +306,89 @@
   <script>
     const STORAGE_KEY = "moriLandingSettingsV2";
     const defaults = {
-      navBrand: "Mori Class",
-      heroEyebrow: "Workshop Điện Ảnh Độc Quyền",
-      heroTitle: "Điện ảnh mở khung hình. Tình yêu mở vô thức.",
-      heroSubtitle: "Một trải nghiệm điện ảnh, tâm lý học và khoa học thần kinh để giải mã vì sao ta bị thu hút, vì sao ta lặp lại một kiểu yêu, và vì sao có những cuộc gặp khiến thời gian như biến mất.",
+      navBrand: "MORI CLASS",
+      heroEyebrow: "Workshop Điện Ảnh",
+      heroTitle: "Luật hấp dẫn trong tình yêu",
+      heroSubtitle: "Một workshop điện ảnh kết hợp tâm lý học và khoa học thần kinh để giải mã vì sao ta bị thu hút, vì sao ta lặp lại một kiểu yêu, và vì sao có những cuộc gặp khiến thời gian như biến mất.",
       ctaText: "Đăng Ký Ngay",
-      visualTitle: "Ánh đèn neon, hành lang ký ức, một khung hình nơi hiện tại và quá khứ chồng lên nhau.",
-      visualDescription: "Visual cue: Wong Kar-wai gặp Inception, bảng màu đỏ rượu, hổ phách và xanh teal, ánh sáng thấp, khói mỏng, chiều sâu điện ảnh nhưng vẫn tỉnh táo và tinh gọn.",
-      introQuote: "Có những cuộc gặp không đến để bắt đầu. Chúng đến để đánh thức một phần rất cũ trong ta.",
-      introKicker: "The Hook",
       introTitle: "Tình yêu không chỉ là cảm xúc. Đó là một hệ tọa độ.",
-      introBody1: "Thời gian có thể đánh lừa ta. Một ánh nhìn vài giây có thể đánh thức ký ức nhiều năm.",
-      introBody2: "Luật hấp dẫn có thể được nhìn qua chú ý, dopamine, dự đoán, mô thức gắn bó và ngôn ngữ của điện ảnh.",
-      journeyKicker: "The 4-Part Journey",
-      journeyTitle: "Một lộ trình rõ ràng, giàu hình ảnh, không tường chữ.",
-      journeyLead: "Bạn đi qua bốn chặng: tạo câu chuyện, xem phim, giải mã tâm lý và bước vào cộng đồng Mori Class.",
-      part1Title: "Game - Xây Dựng Câu Chuyện Tình Yêu",
-      part1Body: "Bạn bốc những lá bài kể chuyện ngẫu nhiên, ghép thành một tuyến tình yêu theo kỹ thuật Hollywood, rồi nhìn vào những lựa chọn ấy qua lăng kính Carl Jung, Alfred Adler và khoa học thần kinh về lực hút.",
-      part2Title: "Cinema Time - Xem Phim",
-      part2Body: "Cả phòng cùng đi vào một trải nghiệm điện ảnh tập thể, nơi từng ánh nhìn, khoảng lặng và cú dựng hình trở thành dữ liệu cảm xúc để mỗi người tự quan sát phản ứng bên trong mình.",
-      part3Title: "Connection - Giao Lưu & Thảo Luận",
-      part3Body: "Sau bộ phim, ta bóc tách các tầng tâm lý của nhân vật, đối thoại về tình yêu, ký ức, lựa chọn, và chia sẻ những câu chuyện cá nhân trong một không gian tôn trọng chiều sâu.",
-      part4Title: "Community - CLB Mori Class",
-      part4Body: "Những người muốn đi xa hơn sẽ nhận lời mời gia nhập Mori Class: cộng đồng nhỏ dành cho người yêu điện ảnh, thích suy nghĩ sâu và tìm kiếm các kết nối có chất lượng.",
-      audienceKicker: "Who Is This For?",
-      audienceTitle: "Dành cho những người muốn hiểu tình yêu sâu hơn bề mặt.",
-      audienceLead: "Không cần nền tảng học thuật. Chỉ cần bạn tò mò, thích quan sát và muốn gặp những cuộc trò chuyện thật.",
-      ticketKicker: "Registration & Tickets",
-      ticketTitle: "Giữ ghế trước khi căn phòng tối khép lại.",
+      introLead: "Trang này được thiết kế để người xem hiểu ngay vấn đề: yêu, nhớ, chọn và bị thu hút đều có thể được đọc qua thời gian, ký ức, não bộ và câu chuyện mà ta tự kể về mình.",
+      hookCard1Title: "Thời gian đánh lừa ta",
+      hookCard1Body: "Một ánh nhìn vài giây có thể đánh thức ký ức nhiều năm. Có những cuộc gặp không bắt đầu ở hiện tại.",
+      hookCard2Title: "Luật hấp dẫn có cơ chế",
+      hookCard2Body: "Không chỉ là niềm tin. Ta nhìn nó qua chú ý, dopamine, dự đoán và mô thức gắn bó.",
+      hookCard3Title: "Tâm lý học giúp gọi tên",
+      hookCard3Body: "Jung, Adler và điện ảnh cho ta ngôn ngữ để đọc lại hình mẫu vô thức trong tình yêu.",
+      journeyTitle: "Bốn chặng trải nghiệm không tường chữ",
+      journeyLead: "Layout dạng media grid giúp người xem quét nhanh: chơi, xem, thảo luận và bước vào cộng đồng. Mỗi chặng có hình ảnh riêng để dễ nhớ và dễ chuyển đổi.",
+      part1Title: "01. Game & Science",
+      part1Body: "Xây dựng câu chuyện tình yêu bằng thẻ ngẫu nhiên, kỹ thuật Hollywood, Jung, Adler và neuroscience.",
+      part2Title: "02. Watch Movie",
+      part2Body: "Một trải nghiệm xem phim tập thể, nơi hình ảnh, nhạc và khoảng lặng trở thành dữ liệu cảm xúc.",
+      part3Title: "03. Discussion",
+      part3Body: "Giải mã nhân vật, biểu tượng, mô thức yêu và chia sẻ câu chuyện cá nhân trong không gian ấm.",
+      part4Title: "04. Mori Class",
+      part4Body: "Lời mời vào cộng đồng nhỏ dành cho người yêu điện ảnh, tư duy nội tâm và kết nối sâu.",
+      audienceTitle: "Người xem phim bằng cả trí tuệ lẫn trái tim",
+      audienceLead: "Không cần nền tảng học thuật. Chỉ cần bạn tò mò, thích quan sát và muốn tham gia những cuộc trò chuyện thật.",
+      audience1Title: "The Cinema Lover",
+      audience1Body: "Yêu điện ảnh và muốn đọc phim như bản đồ cảm xúc, ký ức và biểu tượng.",
+      audience2Title: "The Psychology Enthusiast",
+      audience2Body: "Tò mò về Jung, Adler, vô thức, mô thức gắn bó và cách ta chọn người mình yêu.",
+      audience3Title: "The Seeker of Connection",
+      audience3Body: "Muốn gặp những người nói chuyện sâu, lắng nghe kỹ và không ngại đi vào câu hỏi khó.",
+      audience4Title: "The Science-Curious",
+      audience4Body: "Muốn hiểu phần khoa học phía sau hấp dẫn: chú ý, dopamine, dự đoán và ký ức.",
+      ticketTitle: "Giữ ghế trước khi căn phòng tối khép lại",
       ticketLead: "Số lượng chỗ ngồi giới hạn để phần chia sẻ đủ riêng tư, đủ tập trung và đủ an toàn.",
       earlyTitle: "Early Bird",
       earlyPrice: "299.000đ",
-      earlyDescription: "Dành cho những suất đăng ký đầu tiên. Bao gồm trải nghiệm workshop, xem phim, thảo luận và cơ hội nhận lời mời vào Mori Class.",
+      earlyDescription: "Ưu đãi cho những ghế đầu tiên. Bao gồm workshop, xem phim, thảo luận và cơ hội nhận lời mời vào Mori Class.",
       standardTitle: "Standard",
       standardPrice: "399.000đ",
-      standardDescription: "Vé tiêu chuẩn sau khi hết ưu đãi Early Bird. Thông tin thời gian, địa điểm và phim chiếu sẽ được gửi sau khi xác nhận đăng ký.",
-      formQuestionLabel: "Một câu hỏi bạn mang đến workshop",
-      formQuestionPlaceholder: "Ví dụ: Vì sao mình cứ bị thu hút bởi cùng một kiểu người?",
-      formNote: "Mori Class sẽ liên hệ để xác nhận ghế, hướng dẫn thanh toán và gửi thông tin chi tiết.",
+      standardDescription: "Vé tiêu chuẩn sau Early Bird. Thời gian, địa điểm và phim chiếu sẽ được gửi sau khi xác nhận đăng ký.",
+      registrationTitle: "Đăng ký qua Google Form",
+      registrationDescription: "Bấm nút bên dưới để mở form đăng ký chính thức. Google Form sẽ thu thông tin liên hệ, loại vé và câu hỏi bạn muốn mang đến workshop.",
+      registrationButtonText: "Mở Google Form",
+      formNote: "Link Google Form có thể thay đổi trong trang admin. Mori Class sẽ liên hệ sau khi nhận được form.",
       googleFormUrl: "",
-      footerDescription: "Mori Class là không gian dành cho những người yêu điện ảnh, tâm lý học và những cuộc trò chuyện có chiều sâu.",
-      footerContact: "Liên hệ: moriclass@example.com · 0900 000 000",
+      finalCtaTitle: "Sẵn sàng xem lại tình yêu bằng một ngôn ngữ khác?",
+      finalCtaText: "Giữ ghế ngay",
+      footerDescription: "Không gian dành cho người yêu điện ảnh, tâm lý học và những cuộc trò chuyện có chiều sâu.",
+      footerCol1Title: "Workshop",
+      footerCol1Items: "Điện ảnh\nTâm lý học\nKhoa học thần kinh",
+      footerCol2Title: "Cộng đồng",
+      footerCol2Items: "Mori Class\nDeep talk\nMovie night",
+      footerCol3Title: "Liên hệ",
+      footerCol3Items: "moriclass@example.com\n0900 000 000\nFacebook · Instagram · TikTok",
       heroMediaUrl: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1800&q=85",
       heroMediaFit: "auto",
-      heroImage: "https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=1800&q=85",
-      heroVideo: "",
-      visualMedia: "",
       bodyFont: '"Be Vietnam Pro", "Segoe UI", Arial, sans-serif',
-      titleFont: '"Playfair Display", Lora, "Times New Roman", serif',
-      baseFontSize: 16,
-      leadSize: 20,
-      h1Size: 94,
-      h2Size: 58,
-      cardTitleSize: 25
+      titleFont: '"Playfair Display", Lora, "Times New Roman", serif'
     };
 
     const form = document.querySelector("#settingsForm");
     const toast = document.querySelector("#toast");
-    const rangeNames = ["baseFontSize", "leadSize", "h1Size", "h2Size", "cardTitleSize"];
 
     function getSettings() {
-      try {
-        return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") };
-      } catch {
-        return { ...defaults };
-      }
+      try { return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") }; }
+      catch { return { ...defaults }; }
     }
 
     function fillForm(settings) {
       Object.entries(settings).forEach(([key, value]) => {
         const field = form.elements[key];
-        if (!field) return;
-        field.value = value;
+        if (field) field.value = value;
       });
-      updateRangeLabels();
     }
 
     function readForm() {
       const data = {};
       Object.keys(defaults).forEach((key) => {
         const field = form.elements[key];
-        if (!field) return;
-        data[key] = rangeNames.includes(key) ? Number(field.value) : field.value.trim();
+        if (field) data[key] = field.value.trim();
       });
       return data;
-    }
-
-    function updateRangeLabels() {
-      rangeNames.forEach((name) => {
-        const label = document.querySelector(`[data-value="${name}"]`);
-        const field = form.elements[name];
-        if (label && field) label.textContent = field.value;
-      });
     }
 
     function showToast(message) {
@@ -676,8 +405,6 @@
         document.querySelector(`[data-section="${tab.dataset.tab}"]`).classList.add("active");
       });
     });
-
-    form.addEventListener("input", updateRangeLabels);
 
     document.querySelector("#saveBtn").addEventListener("click", () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(readForm()));
