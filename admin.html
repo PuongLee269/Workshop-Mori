@@ -153,7 +153,7 @@
     <div class="topbar-inner">
       <div>
         <h1>Admin Mori Landing</h1>
-        <p class="sub">Các tab đã khớp với cấu trúc 3 chặng mới và tích hợp tính năng chỉnh sửa màu sắc.</p>
+        <p class="sub">Quản lý nội dung, màu sắc và toàn bộ hình ảnh trên giao diện chính.</p>
       </div>
       <div class="actions">
         <button class="primary" id="saveBtn" type="button">Lưu thay đổi</button>
@@ -172,7 +172,7 @@
         <button class="tab" type="button" data-tab="audience">Đối tượng</button>
         <button class="tab" type="button" data-tab="ticket">Vé & CTA</button>
         <button class="tab" type="button" data-tab="footer">Footer</button>
-        <button class="tab" type="button" data-tab="media">Media</button>
+        <button class="tab" type="button" data-tab="media">Media (Hình ảnh)</button>
         <button class="tab" type="button" data-tab="colors">Màu sắc</button>
         <button class="tab" type="button" data-tab="type">Font</button>
       </nav>
@@ -263,7 +263,7 @@
             <div class="field"><label for="registrationButtonText">Text nút Google Form</label><input id="registrationButtonText" name="registrationButtonText" /></div>
             <div class="field full"><label for="registrationDescription">Mô tả panel đăng ký</label><textarea id="registrationDescription" name="registrationDescription"></textarea></div>
             <div class="field full"><label for="formNote">Ghi chú dưới nút đăng ký</label><textarea id="formNote" name="formNote"></textarea></div>
-            <div class="field full"><label for="googleFormUrl">Link Google Form đăng ký</label><input id="googleFormUrl" name="googleFormUrl" placeholder="https://forms.gle/... hoặc https://docs.google.com/forms/..." /></div>
+            <div class="field full"><label for="googleFormUrl">Link Google Form đăng ký</label><input id="googleFormUrl" name="googleFormUrl" placeholder="https://forms.gle/..." /></div>
             <div class="field full"><label for="finalCtaTitle">Tiêu đề CTA vàng cuối trang</label><textarea id="finalCtaTitle" name="finalCtaTitle"></textarea></div>
             <div class="field"><label for="finalCtaText">Text nút CTA cuối</label><input id="finalCtaText" name="finalCtaText" /></div>
           </div>
@@ -287,12 +287,33 @@
 
         <section class="section" data-section="media">
           <div class="section-head">
-            <h2>Media</h2>
-            <p>Khung ảnh/video đầu tiên trong hero.</p>
+            <h2>Media (Hình ảnh giao diện)</h2>
+            <p>Cấu hình toàn bộ link ảnh/video phân bổ trên Landing Page.</p>
           </div>
           <div class="grid">
-            <div class="field full"><label for="heroMediaUrl">Ảnh hoặc video cho khung đầu tiên</label><input id="heroMediaUrl" name="heroMediaUrl" placeholder="https://... ảnh, video .mp4/.webm hoặc YouTube" /></div>
-            <div class="field"><label for="heroMediaFit">Cách khớp khung</label><select id="heroMediaFit" name="heroMediaFit"><option value="auto">Auto theo ngang/dọc</option><option value="cover">Cover - phủ kín khung</option><option value="contain">Contain - không cắt video</option></select></div>
+            <div class="field full">
+              <label for="heroMediaUrl">1. Media khung mở đầu (Hero Section)</label>
+              <input id="heroMediaUrl" name="heroMediaUrl" placeholder="Link ảnh hoặc link video .mp4 / YouTube" />
+            </div>
+            <div class="field full">
+              <label for="heroMediaFit">Cách khớp khung Hero</label>
+              <select id="heroMediaFit" name="heroMediaFit"><option value="auto">Auto theo ngang/dọc</option><option value="cover">Cover - phủ kín khung</option><option value="contain">Contain - giữ nguyên tỷ lệ</option></select>
+            </div>
+            
+            <div class="field full" style="margin-top: 14px; border-top: 1px solid var(--line); padding-top: 14px;">
+              <label for="journeyImg1">2. Ảnh minh họa Chặng 01 (Game & Kịch bản)</label>
+              <input id="journeyImg1" name="journeyImg1" placeholder="https://images.unsplash.com/... hoặc link ảnh bất kỳ" />
+            </div>
+            
+            <div class="field full">
+              <label for="journeyImg2">3. Ảnh minh họa Chặng 02 (Xem phim & Thảo luận)</label>
+              <input id="journeyImg2" name="journeyImg2" placeholder="https://images.unsplash.com/... hoặc link ảnh bất kỳ" />
+            </div>
+            
+            <div class="field full">
+              <label for="journeyImg3">4. Ảnh minh họa Chặng 03 (Kết nối & Mori Class)</label>
+              <input id="journeyImg3" name="journeyImg3" placeholder="https://images.unsplash.com/... hoặc link ảnh bất kỳ" />
+            </div>
           </div>
         </section>
 
@@ -336,7 +357,6 @@
                 <input type="color" id="colorAccent_picker" oninput="document.getElementById('colorAccent').value = this.value">
                 <input type="text" id="colorAccent" name="colorAccent" placeholder="#efc45b" onchange="document.getElementById('colorAccent_picker').value = this.value">
               </div>
-              <span class="hint">Màu áp dụng cho các nút Đăng ký, dải màu Highlight, Chặng Badge và khối CTA.</span>
             </div>
           </div>
         </section>
@@ -421,7 +441,11 @@
       colorDarkBg: "#171513",
       colorLightText: "#171412",
       colorDarkText: "#ffffff",
-      colorAccent: "#efc45b"
+      colorAccent: "#efc45b",
+      /* Thêm 3 đường link ảnh mặc định cho 3 chặng lộ trình mới vào bộ nhớ của Admin */
+      journeyImg1: "https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=900&q=85",
+      journeyImg2: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=85",
+      journeyImg3: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=85"
     };
 
     const form = document.querySelector("#settingsForm");
@@ -437,7 +461,6 @@
         const field = form.elements[key];
         if (field) {
           field.value = value;
-          // Đồng bộ giá trị sang Color Picker tương ứng nếu là trường màu sắc
           const picker = document.getElementById(`${key}_picker`);
           if (picker) picker.value = value || "#000000";
         }
@@ -470,7 +493,7 @@
 
     document.querySelector("#saveBtn").addEventListener("click", () => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(readForm()));
-      showToast("Đã lưu. Refresh trang chính để thấy thay đổi.");
+      showToast("Đã lưu thành công! Hãy tải lại trang chủ để áp dụng diện mạo mới.");
     });
 
     document.querySelector("#resetBtn").addEventListener("click", () => {
