@@ -18,7 +18,7 @@
       --title-font: "Playfair Display", "Lora", "Times New Roman", serif;
       --accent-font: "Lora", "Times New Roman", serif;
 
-      /* Các biến màu mặc định (Sẽ bị ghi đè bởi LocalStorage khi lưu từ Admin) */
+      /* Các biến màu mặc định (Sẽ bị ghi đè bởi tệp đám mây khi lưu từ Admin) */
       --color-light-bg: #fff7e8;
       --color-dark-bg: #171513;
       --color-light-text: #171412;
@@ -327,7 +327,6 @@
       color: inherit;
     }
 
-    /* --- BỐ CỤC HÀNG DỌC ĐÔI XEN KẼ CỦA LỘ TRÌNH (JOURNEY) --- */
     .journey-container {
       display: flex;
       flex-direction: column;
@@ -704,7 +703,7 @@
         <h1>Luật hấp dẫn trong <span class="script">tình yêu</span></h1>
         <p class="hero-text">
           Một workshop điện ảnh kết hợp tâm lý học và khoa học thần kinh để giải mã vì sao ta bị thu hút,
-          vì sao ta lặp lại một kiểu yêu, và vì sao có những cuộc gặp khiến thời gian như biến mất.
+          vì sao ta lặp lại một kiểu yêu, and vì sao có những cuộc gặp khiến thời gian như biến mất.
         </p>
         <div class="hero-actions">
           <a class="pill" href="#ticket">Đăng Ký Ngay</a>
@@ -874,7 +873,7 @@
                 </p>
               </div>
               <div class="field full">
-                <a class="pill registration-link" href="https://bit.ly/4f3d2dj " target="_blank" rel="noopener">Mở Google Form</a>
+                <a class="pill registration-link" href="https://bit.ly/4f3d2dj" target="_blank" rel="noopener">Mở Google Form</a>
                 <p class="form-note">Link Google Form có thể thay đổi trong trang admin. Mori Class sẽ liên hệ sau khi nhận được form.</p>
               </div>
             </div>
@@ -925,17 +924,23 @@
   </footer>
 
   <script>
-    (function () {
-      const saved = localStorage.getItem("moriLandingSettingsV2");
-      if (!saved) return;
-
+    // SỬ DỤNG HÀM KHỞI CHẠY BẤT ĐỒNG BỘ ĐỂ ĐỌC DỮ LIỆU TỪ TỆP ĐÁM MÂY SETTINGS.JSON TRÊN GITHUB
+    (async function () {
       let settings;
       try {
-        settings = JSON.parse(saved);
+        // Tải cấu hình tập trung từ file cấu hình đám mây (Thêm tham số timestamp để tránh cache trình duyệt)
+        const response = await fetch(`./settings.json?t=${Date.now()}`);
+        if (!response.ok) {
+          console.log("Chưa phát hiện file settings.json toàn cục. Đang áp dụng giao diện mặc định.");
+          return;
+        }
+        settings = await response.json();
       } catch (error) {
-        console.warn("Khong doc duoc cau hinh Mori Landing:", error);
+        console.warn("Không đọc được tệp cấu hình đám mây, sử dụng giao diện mặc định gốc:", error);
         return;
       }
+
+      if (!settings) return;
 
       // --- 1. LOGIC GHI ĐÈ HỆ THỐNG MÀU SẮC ĐỘNG VÀO CSS VARIABLES ---
       if (settings.colorLightBg) document.documentElement.style.setProperty("--color-light-bg", settings.colorLightBg);
@@ -1023,6 +1028,7 @@
         document.documentElement.style.setProperty("--accent-font", settings.titleFont);
       }
 
+      // --- 5. ĐIỀU HƯỚNG LIÊN KẾT ĐĂNG KÝ GOOGLE FORM ---
       if (settings.googleFormUrl) {
         document.querySelectorAll(".registration-link, .nav-actions .pill, .hero-actions .pill:first-child, .cta .pill").forEach((link) => {
           link.setAttribute("href", settings.googleFormUrl);
