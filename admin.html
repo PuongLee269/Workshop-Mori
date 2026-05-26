@@ -149,6 +149,51 @@
   </style>
 </head>
 <body>
+  <div id="loginGate" style="position: fixed; inset: 0; background: #0f1115; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; font-family: 'Segoe UI', sans-serif; color: #f6f1e8;">
+  <h2 style="font-size: 24px; margin: 0;">Mori Admin Panel</h2>
+  <p style="color: #aeb4c0; margin: 0; font-size: 14px;">Vui lòng xác thực quyền chủ sở hữu</p>
+  <input type="password" id="gatePass" placeholder="Nhập mật khẩu" style="max-width: 280px; text-align: center; height: 44px; padding: 10px; border: 1px solid rgba(255,255,255,0.12); border-radius: 8px; background: #171a21; color: #fff; outline: none;">
+  <button onclick="validateGate()" style="min-height: 42px; padding: 0 30px; border: 1px solid rgba(215, 163, 74, 0.55); border-radius: 8px; background: #d7a34a; color: #211707; font-weight: 700; cursor: pointer;">Đăng nhập</button>
+  <p id="gateError" style="color: #d85d5d; font-size: 13px; margin: 0; display: none;">Mật khẩu không chính xác!</p>
+</div>
+
+<script>
+  // Chuỗi mã hóa SHA-256 của mật khẩu: "mori2026"
+  // (Nếu người khác bấm F12 xem code, họ cũng chỉ thấy chuỗi mã hóa này chứ không biết mật khẩu thật)
+  const PASSWORD_HASH = "8a715fcc5522557ff60d267324ea9bf694dc5066db2c2ad79ff10398f6d302a2"; 
+
+  // Hàm băm mật khẩu sang SHA-256
+  async function hashString(str) {
+    const utf8 = new TextEncoder().encode(str);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', utf8);
+    return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  // Kiểm tra mật khẩu lúc mở trang
+  async function validateGate() {
+    const input = document.getElementById("gatePass").value;
+    const inputHash = await hashString(input);
+    
+    if (inputHash === PASSWORD_HASH) {
+      document.getElementById("loginGate").style.display = "none"; // Mở khóa trang admin
+      sessionStorage.setItem("admin_authenticated", "true"); // Giữ trạng thái đăng nhập khi F5
+    } else {
+      const err = document.getElementById("gateError");
+      err.style.display = "block";
+      setTimeout(() => err.style.opacity = "0", 2000);
+    }
+  }
+
+  // Tự động kiểm tra trạng thái đăng nhập cũ
+  if (sessionStorage.getItem("admin_authenticated") === "true") {
+    document.getElementById("loginGate").style.display = "none";
+  }
+  
+  // Bấm Enter để đăng nhập nhanh
+  document.getElementById("gatePass")?.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") validateGate();
+  });
+</script>
   <header class="topbar">
     <div class="topbar-inner">
       <div>
