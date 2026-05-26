@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -704,7 +703,7 @@
         <h1>Luật hấp dẫn trong <span class="script">tình yêu</span></h1>
         <p class="hero-text">
           Một workshop điện ảnh kết hợp tâm lý học và khoa học thần kinh để giải mã vì sao ta bị thu hút,
-          vì sao ta lặp lại một kiểu yêu, and vì sao có những cuộc gặp khiến thời gian như biến mất.
+          vì sao ta lặp lại một kiểu yêu, và vì sao có những cuộc gặp khiến thời gian như biến mất.
         </p>
         <div class="hero-actions">
           <a class="pill" href="#ticket">Đăng Ký Ngay</a>
@@ -925,22 +924,27 @@
   </footer>
 
   <script>
-    // SỬ DỤNG HÀM KHỞI CHẠY BẤT ĐỒNG BỘ ĐỂ ĐỌC DỮ LIỆU TỪ TỆP ĐÁM MÂY SETTINGS.JSON TRÊN GITHUB
+    // SỬ DỤNG HÀM KHỞI CHẠY BẤT ĐỒNG BỘ ĐỂ ĐỌC DỮ LIỆU TỪ TỆP ĐÁM MÂY HOẶC BACKUP TỪ MÁY CHỦ SẴN CÓ
     (async function () {
       let settings;
       try {
-        // Tải cấu hình tập trung từ file cấu hình đám mây (Thêm tham số timestamp để tránh cache trình duyệt)
+        // 1. Cố gắng fetch file cấu hình đám mây tập trung trên GitHub Pages trước
         const response = await fetch(`./settings.json?t=${Date.now()}`);
-        if (!response.ok) {
-          console.log("Chưa phát hiện file settings.json toàn cục. Đang áp dụng giao diện mặc định.");
-          return;
+        if (response.ok) {
+          settings = await response.json();
+        } else {
+          throw new Error("Chưa có settings.json trên repo GitHub.");
         }
-        settings = await response.json();
       } catch (error) {
-        console.warn("Không đọc được tệp cấu hình đám mây, sử dụng giao diện mặc định gốc:", error);
-        return;
+        console.log("Tìm kiếm dự phòng dữ liệu backup cục bộ trên máy tính của bạn...");
+        // 2. Chế độ cứu hộ: Nếu file đám mây chưa chạy (hoặc lỗi), check bộ nhớ máy cục bộ để preview ngay lập tức
+        const saved = localStorage.getItem("moriLandingSettingsV2");
+        if (saved) {
+          try { settings = JSON.parse(saved); } catch(e) {}
+        }
       }
 
+      // Nếu hoàn toàn không có cài đặt nào được lưu (cả cloud lẫn local), giữ nguyên chữ HTML gốc.
       if (!settings) return;
 
       // --- 1. LOGIC GHI ĐÈ HỆ THỐNG MÀU SẮC ĐỘNG VÀO CSS VARIABLES ---
@@ -1117,6 +1121,7 @@
         container.innerHTML = `<div class="hero-fallback">Không tải được media. Hãy kiểm tra link ảnh/video trong Admin.</div>`;
       }
 
+      // Kiểm tra định dạng video trực tiếp
       function isDirectVideo(url) {
         try {
           const parsed = new URL(url, window.location.href);
@@ -1127,6 +1132,7 @@
         }
       }
 
+      // Trích xuất ID YouTube
       function getYouTubeId(url) {
         try {
           const parsed = new URL(url);
