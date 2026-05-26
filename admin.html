@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Mori Landing</title>
+  <title>Admin Mori Landing (GitHub Cloud)</title>
   <style>
     :root {
       --bg: #0f1115;
@@ -153,10 +153,10 @@
     <div class="topbar-inner">
       <div>
         <h1>Admin Mori Landing</h1>
-        <p class="sub">Quản lý nội dung, màu sắc và toàn bộ hình ảnh trên giao diện chính.</p>
+        <p class="sub">Quản lý nội dung, màu sắc và hình ảnh trực tiếp lên GitHub đám mây.</p>
       </div>
       <div class="actions">
-        <button class="primary" id="saveBtn" type="button">Lưu thay đổi</button>
+        <button class="primary" id="saveBtn" type="button">Lưu lên GitHub</button>
         <a class="button" href="index.html" target="_blank" rel="noreferrer">Mở trang chính</a>
         <button class="danger" id="resetBtn" type="button">Khôi phục mặc định</button>
       </div>
@@ -280,7 +280,7 @@
             <div class="field"><label for="footerCol2Title">Cột 2 - tiêu đề</label><input id="footerCol2Title" name="footerCol2Title" /></div>
             <div class="field full"><label for="footerCol1Items">Cột 1 - nội dung</label><textarea id="footerCol1Items" name="footerCol1Items"></textarea></div>
             <div class="field full"><label for="footerCol2Items">Cột 2 - nội dung</label><textarea id="footerCol2Items" name="footerCol2Items"></textarea></div>
-            <div class="field"><label for="footerCol3Title">Cột 3 - tiêu đề</label><input id="footerCol3Title" name="footerCol3Title" /></div>
+            <div class="field"><label technicians for="footerCol3Title">Cột 3 - tiêu đề</label><input id="footerCol3Title" name="footerCol3Title" /></div>
             <div class="field full"><label for="footerCol3Items">Cột 3 - nội dung</label><textarea id="footerCol3Items" name="footerCol3Items"></textarea></div>
           </div>
         </section>
@@ -378,7 +378,15 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const STORAGE_KEY = "moriLandingSettingsV2";
+    // ==========================================
+    // CẤU HÌNH THÔNG TIN GITHUB CỦA BẠN TẠI ĐÂY
+    // ==========================================
+    const GH_OWNER = "TÊN_TÀI_KHOẢN_GITHUB_CỦA_BẠN"; // Ví dụ: "moriclass"
+    const GH_REPO = "TÊN_REPO_CHỨA_TRANG_WEB";     // Ví dụ: "mori-landing"
+    const GH_PATH = "settings.json";               // Tên file cấu hình sẽ tự sinh ra trong repo
+
+    const TOKEN_KEY = "mori_github_token";
+
     const defaults = {
       navBrand: "MORI CLASS",
       heroEyebrow: "Workshop Điện Ảnh",
@@ -442,7 +450,6 @@
       colorLightText: "#171412",
       colorDarkText: "#ffffff",
       colorAccent: "#efc45b",
-      /* Thêm 3 đường link ảnh mặc định cho 3 chặng lộ trình mới vào bộ nhớ của Admin */
       journeyImg1: "https://images.unsplash.com/photo-1518133835878-5a93cc3f89e5?auto=format&fit=crop&w=900&q=85",
       journeyImg2: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=900&q=85",
       journeyImg3: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=85"
@@ -451,9 +458,79 @@
     const form = document.querySelector("#settingsForm");
     const toast = document.querySelector("#toast");
 
-    function getSettings() {
-      try { return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}") }; }
-      catch { return { ...defaults }; }
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), 2500);
+    }
+
+    // 1. TẢI DỮ LIỆU TỪ FILE SETTINGS.JSON NẰM TRÊN GITHUB PAGES
+    async function getSettings() {
+      try {
+        const response = await fetch(`./${GH_PATH}?t=${Date.now()}`);
+        if (!response.ok) throw new Error();
+        const cloudData = await response.json();
+        return { ...defaults, ...cloudData };
+      } catch {
+        console.log("Chưa có file settings.json toàn cục, khởi tạo dữ liệu mặc định.");
+        return { ...defaults };
+      }
+    }
+
+    // 2. ĐẨY DỮ LIỆU LÊN LƯU TRÊN GITHUB REPO
+    async function saveToGitHub(jsonData) {
+      let token = localStorage.getItem(TOKEN_KEY);
+      if (!token) {
+        token = prompt("Nhập GitHub Personal Access Token của chủ Web để xác thực quyền ghi dữ liệu:");
+        if (!token) return showToast("Hủy thao tác. Cần Token để lưu thay đổi!");
+        localStorage.setItem(TOKEN_KEY, token.trim());
+      }
+
+      showToast("Đang đồng bộ và kiểm tra file trên GitHub...");
+      const url = `https://api.github.com/repos/${GH_OWNER}/${GH_REPO}/contents/${GH_PATH}`;
+      
+      // Encode UTF-8 sang Base64 chính xác phòng trường hợp text có dấu Tiếng Việt nặng
+      const contentBase64 = btoa(unescape(encodeURIComponent(JSON.stringify(jsonData, null, 2))));
+
+      try {
+        // Bước A: Lấy mã SHA của file cũ (Nếu file đã tồn tại)
+        let sha = null;
+        const resGet = await fetch(url, {
+          headers: { "Authorization": `token ${token}` }
+        });
+        if (resGet.ok) {
+          const fileInfo = await resGet.json();
+          sha = fileInfo.sha;
+        }
+
+        // Bước B: Ghi đè file settings.json lên Repo
+        const resPut = await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Authorization": `token ${token}`,
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: "⚡ Cập nhật nội dung từ Mori Admin Panel",
+            content: contentBase64,
+            sha: sha
+          })
+        });
+
+        if (resPut.ok) {
+          showToast("🚀 Lưu thành công! Chờ GitHub deploy giao diện mới toàn cầu (mất tầm 30 giây).");
+        } else {
+          const errData = await resPut.json();
+          if (resPut.status === 401 || resPut.status === 403) {
+            localStorage.removeItem(TOKEN_KEY); // Xóa token bị sai để người dùng nhập lại
+            showToast("Mã Token không hợp lệ hoặc không có quyền ghi. Hãy thử bấm Lưu lại.");
+          } else {
+            showToast(`Lỗi: ${errData.message}`);
+          }
+        }
+      } catch (err) {
+        showToast("Không thể kết nối đến máy chủ GitHub API.");
+      }
     }
 
     function fillForm(settings) {
@@ -476,12 +553,7 @@
       return data;
     }
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add("show");
-      window.setTimeout(() => toast.classList.remove("show"), 2200);
-    }
-
+    // Xử lý chuyển tab giao diện
     document.querySelectorAll(".tab").forEach((tab) => {
       tab.addEventListener("click", () => {
         document.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
@@ -491,19 +563,24 @@
       });
     });
 
+    // Sự kiện nút Lưu thay đổi
     document.querySelector("#saveBtn").addEventListener("click", () => {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(readForm()));
-      showToast("Đã lưu thành công! Hãy tải lại trang chủ để áp dụng diện mạo mới.");
+      saveToGitHub(readForm());
     });
 
-    document.querySelector("#resetBtn").addEventListener("click", () => {
-      if (!confirm("Khôi phục toàn bộ nội dung mặc định?")) return;
-      localStorage.removeItem(STORAGE_KEY);
+    // Sự kiện nút Khôi phục mặc định
+    document.querySelector("#resetBtn").addEventListener("click", async () => {
+      if (!confirm("Khôi phục toàn bộ nội dung mặc định lên đám mây GitHub?")) return;
+      await saveToGitHub(defaults);
       fillForm(defaults);
-      showToast("Đã khôi phục mặc định.");
     });
 
-    fillForm(getSettings());
+    // Khởi chạy hệ thống đồng bộ dữ liệu đám mây
+    async function initAdmin() {
+      const settings = await getSettings();
+      fillForm(settings);
+    }
+    initAdmin();
   </script>
 </body>
 </html>
